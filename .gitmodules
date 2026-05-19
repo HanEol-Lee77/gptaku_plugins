@@ -34,3 +34,6 @@
 [submodule "plugins/insane-design"]
 	path = plugins/insane-design
 	url = https://github.com/fivetaku/insane-design.git
+[submodule "plugins/goaljaby"]
+	path = plugins/goaljaby
+	url = https://github.com/fivetaku/goaljaby.git

@@ -69,6 +69,7 @@ AI Native란 AI를 단순히 도구로 쓰는 게 아니라, 기획부터 실행
 | [nopal](https://github.com/fivetaku/nopal) | Google Workspace 오케스트레이션 — 9개 서비스를 자연어로 조합 |
 | [insane-search](https://github.com/fivetaku/insane-search) | 차단된 사이트 자동 우회 — Phase 0→3 적응형 스케줄러, 무인증 |
 | [insane-design](https://github.com/fivetaku/insane-design) | 웹사이트 CSS를 디자인 시스템으로 분석 — URL에서 디자인 토큰 추출 |
+| [goaljaby](https://github.com/fivetaku/goaljaby) | PRD를 /goal로 변환 — 검토·복구 5종 문서 + 4,000자 컴팩트, Claude Code & Codex 지원 |
 
 > 플러그인은 계속 추가됩니다. Watch 해두시면 새 플러그인 알림을 받을 수 있습니다.
 

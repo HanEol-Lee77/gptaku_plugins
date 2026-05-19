@@ -82,6 +82,13 @@
       "source": "./plugins/insane-design",
       "category": "development",
       "tags": ["design-system", "css-analysis", "design-tokens", "design.md", "report", "redesign", "scaffold", "apply", "build"]
+    },
+    {
+      "name": "goaljaby",
+      "description": "Bridge skill from PRD to /goal — auto-generates 5 docs (VALIDATION/RECOVERY/PLAN/PROGRESS/goal-command.md) with 4,000-character compact enforcement, surfaces runnable /goal command or Codex CLI handoff prompt after human approval.",
+      "source": "./plugins/goaljaby",
+      "category": "productivity",
+      "tags": ["goal", "goaljaby", "PRD", "validation", "recovery", "compact", "claude-code", "codex-cli", "handoff", "korean"]
     }
   ]
 }
