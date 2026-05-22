@@ -69,7 +69,7 @@ After install or update, restart Claude Code to activate the plugin.
 | [nopal](https://github.com/fivetaku/nopal) | Google Workspace orchestration — 9 services composed via natural language |
 | [insane-search](https://github.com/fivetaku/insane-search) | Auto-bypass for blocked websites — Phase 0→3 adaptive scheduler, no API keys |
 | [insane-design](https://github.com/fivetaku/insane-design) | Analyze any website's CSS into a design system — design tokens from URL |
-| [goaljaby](https://github.com/fivetaku/goaljaby) | PRD-to-/goal bridge for Claude Code — 6 Korean review docs, goal starts on the next turn after your approval |
+| [goaljaby](https://github.com/fivetaku/goaljaby) | PRD-to-/goal bridge for Claude Code — 5 Korean review docs + chat review summary, goal starts on the next turn after your approval |
 
 > More plugins are added regularly. Watch the repo to get notified of new releases.
 
