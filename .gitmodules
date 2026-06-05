@@ -37,3 +37,6 @@
 [submodule "plugins/goaljaby"]
 	path = plugins/goaljaby
 	url = https://github.com/fivetaku/goaljaby.git
+[submodule "plugins/dd"]
+	path = plugins/dd
+	url = https://github.com/fivetaku/dd.git

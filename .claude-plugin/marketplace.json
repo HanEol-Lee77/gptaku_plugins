@@ -11,84 +11,192 @@
       "description": "Fetch and explain official documentation for any library/framework using llms.txt pattern",
       "source": "./plugins/docs-guide",
       "category": "development",
-      "tags": ["documentation", "llms-txt", "official-docs", "guide"]
+      "tags": [
+        "documentation",
+        "llms-txt",
+        "official-docs",
+        "guide"
+      ]
     },
     {
       "name": "git-teacher",
       "description": "Git/GitHub onboarding for non-developers using cloud folder analogy. 5-phase approach with Korean language support.",
       "source": "./plugins/git-teacher",
       "category": "education",
-      "tags": ["git", "github", "onboarding", "beginner", "korean", "education"]
+      "tags": [
+        "git",
+        "github",
+        "onboarding",
+        "beginner",
+        "korean",
+        "education"
+      ]
     },
     {
       "name": "vibe-sunsang",
       "description": "AI mentor agent for vibe coders - analyzes Claude Code conversations and provides growth coaching with 4 workspace types (Builder/Explorer/Designer/Operator).",
       "source": "./plugins/vibe-sunsang",
       "category": "education",
-      "tags": ["mentor", "growth", "coaching", "retrospective", "vibe-coding", "korean", "education"]
+      "tags": [
+        "mentor",
+        "growth",
+        "coaching",
+        "retrospective",
+        "vibe-coding",
+        "korean",
+        "education"
+      ]
     },
     {
       "name": "deep-research",
       "description": "AI-powered deep research with multi-agent source verification, 7-phase pipeline, and structured report generation.",
       "source": "./plugins/deep-research",
       "category": "productivity",
-      "tags": ["research", "deep-research", "multi-agent", "citations", "source-verification", "academic"]
+      "tags": [
+        "research",
+        "deep-research",
+        "multi-agent",
+        "citations",
+        "source-verification",
+        "academic"
+      ]
     },
     {
       "name": "pumasi",
       "description": "Parallel coding orchestration — Claude as PM, Codex CLI instances as parallel developers with 7-phase workflow.",
       "source": "./plugins/pumasi",
       "category": "development",
-      "tags": ["codex", "parallel", "orchestration", "multi-agent", "delegation", "pumasi"]
+      "tags": [
+        "codex",
+        "parallel",
+        "orchestration",
+        "multi-agent",
+        "delegation",
+        "pumasi"
+      ]
     },
     {
       "name": "show-me-the-prd",
       "description": "Interview-driven PRD generator for vibe coders — from one sentence to 4 design documents (PRD, data model, phases, project spec).",
       "source": "./plugins/show-me-the-prd",
       "category": "productivity",
-      "tags": ["prd", "product-requirements", "vibe-coding", "interview", "design-document", "planning"]
+      "tags": [
+        "prd",
+        "product-requirements",
+        "vibe-coding",
+        "interview",
+        "design-document",
+        "planning"
+      ]
     },
     {
       "name": "kkirikkiri",
       "description": "Natural language team builder for Claude Code Agent Teams — create purpose-driven AI teams with a single sentence. Research, development, analysis, content teams with quality verification loops.",
       "source": "./plugins/kkirikkiri",
       "category": "productivity",
-      "tags": ["agent-teams", "multi-agent", "team-builder", "orchestration", "korean", "codex", "gemini"]
+      "tags": [
+        "agent-teams",
+        "multi-agent",
+        "team-builder",
+        "orchestration",
+        "korean",
+        "codex",
+        "gemini"
+      ]
     },
     {
       "name": "skillers-suda",
       "description": "4 persona interview-driven skill builder for vibe coders — transform vague ideas into working multi-step workflow skills with prompt/script/API/MCP/RAG step types.",
       "source": "./plugins/skillers-suda",
       "category": "development",
-      "tags": ["skill-builder", "interview", "workflow", "vibe-coding", "korean", "persona", "plugin-dev"]
+      "tags": [
+        "skill-builder",
+        "interview",
+        "workflow",
+        "vibe-coding",
+        "korean",
+        "persona",
+        "plugin-dev"
+      ]
     },
     {
       "name": "nopal",
       "description": "Google Workspace orchestration — orchestrate 9 services (Gmail, Calendar, Drive, Sheets, Docs, Slides, Chat, Tasks, Meet) with natural language via gws CLI. No Opal needed.",
       "source": "./plugins/nopal",
       "category": "productivity",
-      "tags": ["google-workspace", "orchestration", "gws-cli", "gmail", "calendar", "drive", "meet", "automation"]
+      "tags": [
+        "google-workspace",
+        "orchestration",
+        "gws-cli",
+        "gmail",
+        "calendar",
+        "drive",
+        "meet",
+        "automation"
+      ]
     },
     {
       "name": "insane-search",
       "description": "Platform-specific access strategies for AI agents — auto-bypasses blocked sites (X/Twitter, Reddit, Stack Overflow, Naver) without API keys.",
       "source": "./plugins/insane-search",
       "category": "productivity",
-      "tags": ["web-access", "search", "webfetch", "bypass", "jina", "yt-dlp", "twitter", "reddit", "naver"]
+      "tags": [
+        "web-access",
+        "search",
+        "webfetch",
+        "bypass",
+        "jina",
+        "yt-dlp",
+        "twitter",
+        "reddit",
+        "naver"
+      ]
     },
     {
       "name": "insane-design",
       "description": "Design system analyze + apply + build — extract any URL's CSS, apply to your project, or scaffold from scratch with §18 DON'T grep contract.",
       "source": "./plugins/insane-design",
       "category": "development",
-      "tags": ["design-system", "css-analysis", "design-tokens", "design.md", "report", "redesign", "scaffold", "apply", "build"]
+      "tags": [
+        "design-system",
+        "css-analysis",
+        "design-tokens",
+        "design.md",
+        "report",
+        "redesign",
+        "scaffold",
+        "apply",
+        "build"
+      ]
     },
     {
       "name": "goaljaby",
       "description": "Bridge skill from PRD to /goal for Claude Code — auto-generates 5 Korean review docs (VALIDATION/RECOVERY/PLAN/PROGRESS/goal-command), shows a Korean review summary in chat, prepends a 4-line summary to PROGRESS.md, and after a mandatory human approval gate the assistant emits /goal on the last line of its reply so the session starts the goal on the next turn.",
       "source": "./plugins/goaljaby",
       "category": "productivity",
-      "tags": ["goal", "goaljaby", "PRD", "validation", "recovery", "compact", "claude-code", "korean"]
+      "tags": [
+        "goal",
+        "goaljaby",
+        "PRD",
+        "validation",
+        "recovery",
+        "compact",
+        "claude-code",
+        "korean"
+      ]
+    },
+    {
+      "name": "dd",
+      "description": "Drop the current clipboard (text or image) into Claude Code with /dd or /ㅇㅇ — no pasting.",
+      "source": "./plugins/dd",
+      "category": "productivity",
+      "tags": [
+        "clipboard",
+        "image",
+        "screenshot",
+        "dd",
+        "paste"
+      ]
     }
   ]
 }
