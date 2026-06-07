@@ -70,6 +70,7 @@ After install or update, restart Claude Code to activate the plugin.
 | [insane-search](https://github.com/fivetaku/insane-search) | Auto-bypass for blocked websites — Phase 0→3 adaptive scheduler, no API keys |
 | [insane-design](https://github.com/fivetaku/insane-design) | Analyze any website's CSS into a design system — design tokens from URL |
 | [goaljaby](https://github.com/fivetaku/goaljaby) | PRD-to-/goal bridge for Claude Code — 5 Korean review docs + chat review summary, goal starts on the next turn after your approval |
+| [dd](https://github.com/fivetaku/dd) | Drop the current clipboard (text or image) into Claude Code with /dd or /ㅇㅇ — long pastes and screenshots stay out of the chat |
 
 > More plugins are added regularly. Watch the repo to get notified of new releases.
 

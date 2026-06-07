@@ -70,6 +70,7 @@ AI Native란 AI를 단순히 도구로 쓰는 게 아니라, 기획부터 실행
 | [insane-search](https://github.com/fivetaku/insane-search) | 차단된 사이트 자동 우회 — Phase 0→3 적응형 스케줄러, 무인증 |
 | [insane-design](https://github.com/fivetaku/insane-design) | 웹사이트 CSS를 디자인 시스템으로 분석 — URL에서 디자인 토큰 추출 |
 | [goaljaby](https://github.com/fivetaku/goaljaby) | Claude Code용 PRD→/goal 브릿지 — 한국어 검토 5종 문서 + 대화창 검토 요약, 승인하면 다음 턴에서 골 작업이 시작 |
+| [dd](https://github.com/fivetaku/dd) | 현재 클립보드(텍스트·이미지)를 /dd 또는 /ㅇㅇ로 Claude Code에 — 긴 붙여넣기·스크린샷이 대화창을 안 채움 |
 
 > 플러그인은 계속 추가됩니다. Watch 해두시면 새 플러그인 알림을 받을 수 있습니다.
 
