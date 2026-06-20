@@ -58,17 +58,18 @@ After install or update, restart Claude Code to activate the plugin.
 
 | Plugin | Description |
 |--------|-------------|
+| [insane-research](https://github.com/fivetaku/insane-research) | Multi-agent deep research — 7-phase pipeline with source triangulation and quality ratings |
+| [insane-search](https://github.com/fivetaku/insane-search) | Auto-bypass for blocked websites — Phase 0→3 adaptive scheduler, no API keys |
+| [insane-design](https://github.com/fivetaku/insane-design) | Analyze any website's CSS into a design system — design tokens from URL |
+| [insane-review](https://github.com/fivetaku/insane-review) | GPT-5.5 Pro (web-only, no API) code review from inside Claude Code — repomix-pack relevant code, harvest the review via ChatGPT Pro |
 | [docs-guide](https://github.com/fivetaku/docs-guide) | Accurate answers grounded in official documentation — llms.txt standard + 68+ libraries |
 | [git-teacher](https://github.com/fivetaku/git-teacher) | Git/GitHub onboarding for non-developers — cloud-service analogies in 5 steps |
 | [vibe-sunsang](https://github.com/fivetaku/vibe-sunsang) | AI mentoring agent for vibecoders — conversation analysis, mentoring, growth reports |
-| [deep-research](https://github.com/fivetaku/deep-research-kit) | Multi-agent deep research — 7-phase pipeline with source triangulation and quality ratings |
 | [pumasi](https://github.com/fivetaku/pumasi) | Claude as PM + Codex CLI as parallel outsource developers — for large parallel coding tasks |
 | [show-me-the-prd](https://github.com/fivetaku/show-me-the-prd) | Interview-based PRD generator — one sentence in, 4 design documents out |
 | [kkirikkiri](https://github.com/fivetaku/kkirikkiri) | Auto-assemble AI agent teams from natural language — multi-model support |
 | [skillers-suda](https://github.com/fivetaku/skillers-suda) | 4 expert agents debate your idea into a working Claude Code skill |
 | [nopal](https://github.com/fivetaku/nopal) | Google Workspace orchestration — 9 services composed via natural language |
-| [insane-search](https://github.com/fivetaku/insane-search) | Auto-bypass for blocked websites — Phase 0→3 adaptive scheduler, no API keys |
-| [insane-design](https://github.com/fivetaku/insane-design) | Analyze any website's CSS into a design system — design tokens from URL |
 | [goaljaby](https://github.com/fivetaku/goaljaby) | PRD-to-/goal bridge for Claude Code — 5 Korean review docs + chat review summary, goal starts on the next turn after your approval |
 | [dd](https://github.com/fivetaku/dd) | Drop the current clipboard (text or image) into Claude Code with /dd or /ㅇㅇ — long pastes and screenshots stay out of the chat |
 

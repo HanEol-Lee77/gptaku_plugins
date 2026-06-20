@@ -58,17 +58,18 @@ AI Native란 AI를 단순히 도구로 쓰는 게 아니라, 기획부터 실행
 
 | 플러그인 | 설명 |
 |---------|------|
+| [insane-research](https://github.com/fivetaku/insane-research) | 멀티에이전트 딥리서치 — 7단계 파이프라인, 소스 검증, 품질 등급 |
+| [insane-search](https://github.com/fivetaku/insane-search) | 차단된 사이트 자동 우회 — Phase 0→3 적응형 스케줄러, 무인증 |
+| [insane-design](https://github.com/fivetaku/insane-design) | 웹사이트 CSS를 디자인 시스템으로 분석 — URL에서 디자인 토큰 추출 |
+| [insane-review](https://github.com/fivetaku/insane-review) | Claude Code 안에서 GPT-5.5 Pro(웹 전용·무API) 코드 리뷰 — 관련 코드만 repomix 패킹해 ChatGPT Pro로 리뷰 회수 |
 | [docs-guide](https://github.com/fivetaku/docs-guide) | 공식문서 기반 정확한 답변 — llms.txt 표준 + 68개+ 라이브러리 |
 | [git-teacher](https://github.com/fivetaku/git-teacher) | 비개발자를 위한 Git/GitHub 온보딩 — 클라우드 비유로 5단계 |
 | [vibe-sunsang](https://github.com/fivetaku/vibe-sunsang) | 바이브코더를 위한 AI 멘토 에이전트 — 대화 분석, 멘토링, 성장 리포트 |
-| [deep-research](https://github.com/fivetaku/deep-research-kit) | 멀티에이전트 딥리서치 — 7단계 파이프라인, 소스 검증, 품질 등급 |
 | [pumasi](https://github.com/fivetaku/pumasi) | Claude가 PM, Codex CLI가 병렬 외주 개발자 — 대규모 병렬 코딩 |
 | [show-me-the-prd](https://github.com/fivetaku/show-me-the-prd) | 인터뷰 기반 PRD 생성 — 한 문장에서 4종 디자인 문서까지 |
 | [kkirikkiri](https://github.com/fivetaku/kkirikkiri) | 자연어 한마디로 AI 에이전트 팀 자동 구성 — 멀티 모델 지원 |
 | [skillers-suda](https://github.com/fivetaku/skillers-suda) | 4명의 전문가가 수다 떨면서 아이디어를 동작하는 스킬로 변환 |
 | [nopal](https://github.com/fivetaku/nopal) | Google Workspace 오케스트레이션 — 9개 서비스를 자연어로 조합 |
-| [insane-search](https://github.com/fivetaku/insane-search) | 차단된 사이트 자동 우회 — Phase 0→3 적응형 스케줄러, 무인증 |
-| [insane-design](https://github.com/fivetaku/insane-design) | 웹사이트 CSS를 디자인 시스템으로 분석 — URL에서 디자인 토큰 추출 |
 | [goaljaby](https://github.com/fivetaku/goaljaby) | Claude Code용 PRD→/goal 브릿지 — 한국어 검토 5종 문서 + 대화창 검토 요약, 승인하면 다음 턴에서 골 작업이 시작 |
 | [dd](https://github.com/fivetaku/dd) | 현재 클립보드(텍스트·이미지)를 /dd 또는 /ㅇㅇ로 Claude Code에 — 긴 붙여넣기·스크린샷이 대화창을 안 채움 |
 
