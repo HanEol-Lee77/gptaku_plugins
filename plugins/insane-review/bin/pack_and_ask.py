@@ -127,11 +127,12 @@ def pack_repo(target: Path, *, include: str | None, ignore: str | None,
     if sm and int(sm.group(1)) > 0:
         print(f"  🔒 secretlint: 의심 파일 {sm.group(1)}개 감지 → 출력에서 제외됨(외부 전송 안전)")
 
-    if token_budget and proc.returncode != 0 and tokens and tokens > token_budget:
-        print(f"  ⚠️  토큰 예산 초과: {tokens:,} > {token_budget:,} (파일은 생성됨)")
-    elif proc.returncode != 0:
-        print("  ⚠️  repomix 경고/오류(rc={}):".format(proc.returncode))
-        print("     " + "\n     ".join(out.strip().splitlines()[-6:]))
+    if proc.returncode != 0:
+        if token_budget and tokens and tokens > token_budget:
+            sys.exit(f"❌ repomix 실패: 토큰 예산 초과 ({tokens:,} > {token_budget:,}) — 범위를 좁히거나 예산을 늘리세요. (rc={proc.returncode})")
+        else:
+            sys.exit(f"❌ repomix 실행 실패 (rc={proc.returncode}) — 로그를 확인하세요.\n"
+                     "     " + "\n     ".join(out.strip().splitlines()[-6:]))
 
     if not out_path.exists():
         sys.exit("❌ repomix 출력 파일이 생성되지 않았습니다.")
@@ -372,14 +373,24 @@ def _open_switcher(page):
 
 
 def read_menu_state(page) -> dict:
-    """열린 메뉴에서 모델명(menuitem) + 체크된 추론단계(menuitemradio aria-checked)를 읽는다."""
+    """열린 메뉴에서 모델명(menuitem 중 checked/selected) + 체크된 추론단계(menuitemradio aria-checked)를 읽는다."""
     state = {"model": None, "effort_checked": None, "items": []}
     try:
-        for it in page.query_selector_all('[role="menuitem"]'):
+        # 모델명은 menuitem, menuitemradio, option 중에서 aria-checked="true" 또는 aria-selected="true"인 것을 우선 검색
+        for it in page.query_selector_all('[role="menuitem"], [role="menuitemradio"], [role="option"]'):
+            is_checked = it.get_attribute("aria-checked") == "true" or it.get_attribute("aria-selected") == "true"
             t = (it.inner_text() or "").strip()
             if t and re.search(r"GPT|gpt|o\d|Claude|Gemini", t):
-                state["model"] = t.splitlines()[0][:40]
-                break
+                if is_checked:
+                    state["model"] = t.splitlines()[0][:40]
+                    break
+        # 만약 체크된 모델명을 못 찾았다면, 예비용으로 첫 번째 매칭 모델명을 폴백으로 함
+        if not state["model"]:
+            for it in page.query_selector_all('[role="menuitem"], [role="menuitemradio"], [role="option"]'):
+                t = (it.inner_text() or "").strip()
+                if t and re.search(r"GPT|gpt|o\d|Claude|Gemini", t):
+                    state["model"] = t.splitlines()[0][:40]
+                    break
     except Exception:
         pass
     try:
@@ -393,28 +404,37 @@ def read_menu_state(page) -> dict:
     return state
 
 
-def select_model(page, want: str, require_model: str | None = None) -> bool:
+def select_model(page, want: str, require_model: str | None = None) -> tuple[bool, str | None]:
     """모델 스위처를 열고 want(추론단계, 예: 'pro')를 선택 + 검증.
-    require_model 지정 시 모델명(예: 'GPT-5.5')이 일치하지 않으면 False(실패) 반환."""
+    require_model 지정 시 모델명(예: 'GPT-5.5')이 일치하지 않으면 False(실패) 반환.
+    반환: (verified, verified_model_name)"""
     want_l = want.lower()
     if not _open_switcher(page):
         print("  ⚠️  모델 스위처를 못 찾음 → 기본 모델로 진행")
-        return False
+        return False, None
 
     before = read_menu_state(page)
     if before["model"]:
         print(f"  메뉴 모델명: {before['model']!r} / 추론단계 목록: {before['items']}")
 
-    # require_model 검증 (모델명 불일치면 클릭 안 하고 실패)
-    if require_model and before["model"] and require_model.lower() not in before["model"].lower():
-        print(f"  ❌ 모델 불일치: 기대 '{require_model}' ≠ 메뉴 '{before['model']}' → 중단(전송 안 함)")
-        try:
-            page.keyboard.press("Escape")
-        except Exception:
-            pass
-        return False
+    # require_model 검증 (모델명을 읽지 못했거나 모델명이 기대값과 다르면 즉시 중단)
+    if require_model:
+        if not before["model"]:
+            print(f"  ❌ 모델명 획득 실패 (require_model '{require_model}' 검증 불가) → 즉시 중단 (fail-closed)")
+            try:
+                page.keyboard.press("Escape")
+            except Exception:
+                pass
+            return False, None
+        if require_model.lower() not in before["model"].lower():
+            print(f"  ❌ 모델 불일치: 기대 '{require_model}' ≠ 메뉴 '{before['model']}' → 중단(전송 안 함)")
+            try:
+                page.keyboard.press("Escape")
+            except Exception:
+                pass
+            return False, None
 
-    # 추론단계 정확일치 → 부분일치 클릭
+    # 추론단계 클릭 대상 탐색
     clicked = None
     cands = []
     for sel in EFFORT_ITEM_SELECTORS:
@@ -422,6 +442,7 @@ def select_model(page, want: str, require_model: str | None = None) -> bool:
             cands.extend(page.query_selector_all(sel))
         except Exception:
             continue
+
     for exact in (True, False):
         for it in cands:
             try:
@@ -430,7 +451,7 @@ def select_model(page, want: str, require_model: str | None = None) -> bool:
                 if (exact and low == want_l) or (not exact and want_l in low):
                     it.click()
                     clicked = t.splitlines()[0][:40]
-                    time.sleep(1)
+                    time.sleep(1.5)  # 클릭 후 드롭다운이 닫히는 시간 대기
                     break
             except Exception:
                 continue
@@ -443,13 +464,33 @@ def select_model(page, want: str, require_model: str | None = None) -> bool:
             page.keyboard.press("Escape")
         except Exception:
             pass
-        return False
+        return False, None
 
-    # 검증: pill에서 선택 상태 확인. 미확인이면 False(호출부가 require_model일 때 중단)
-    pills = read_model_pills(page)
-    verified = any(want_l in p.lower() for p in pills)
-    print(f"  {'✓' if verified else '⚠️'} 추론단계 선택: '{clicked}' | pill={pills} | 검증={'OK' if verified else '미확인'}")
-    return verified
+    # Pro 제안: 메뉴 재오픈하여 effort_checked 및 model_checked 상태 검증
+    if not _open_switcher(page):
+        print("  ⚠️  선택 상태 검증을 위해 메뉴 재오픈 실패")
+        return False, None
+
+    after = read_menu_state(page)
+    try:
+        page.keyboard.press("Escape")
+    except Exception:
+        pass
+    time.sleep(0.5)
+
+    model_verified = True
+    if require_model:
+        model_verified = after["model"] is not None and require_model.lower() in after["model"].lower()
+
+    effort_verified = after["effort_checked"] is not None and want_l in after["effort_checked"].lower()
+    verified = model_verified and effort_verified
+
+    verified_model = after["model"] or "Unknown Model"
+    verified_effort = after["effort_checked"] or "Default"
+    verified_model_name = f"{verified_model} ({verified_effort})"
+
+    print(f"  {'✓' if verified else '⚠️'} 최종 모델 검증: model={after['model']} (기대:{require_model}), effort={after['effort_checked']} (기대:{want}) -> 결과={'OK' if verified else '실패'}")
+    return verified, verified_model_name
 
 
 # ---- 첨부 / 입력 / 전송 ----
@@ -463,11 +504,18 @@ def attach_file(page, path: Path) -> bool:
         inp.set_input_files(str(path))
         print(f"  파일 첨부 시도: {path.name} (업로드 대기...)")
         stem = path.stem[:14]  # 칩 라벨은 잘릴 수 있어 앞부분만 매칭
+        
+        # composer 내부 영역(form 또는 textarea의 presentation 부모)으로 locator 한정
+        # ChatGPT UI에서 파일 첨부 칩이 노출되는 영역
+        composer = page.locator("form:has(#prompt-textarea), [role='presentation']:has(#prompt-textarea)").first
+        
         for _ in range(40):
             time.sleep(1)
             try:
-                if page.get_by_text(stem, exact=False).count() > 0:
-                    print("  ✓ 첨부 확인됨(파일명 노출)")
+                # composer 내부에서만 stem 텍스트를 갖는 칩(요소) 검색
+                chip = composer.get_by_text(stem, exact=False)
+                if chip.count() > 0:
+                    print("  ✓ 첨부 확인됨 (composer 내 파일명 노출)")
                     time.sleep(1.5)
                     return True
             except Exception:
@@ -725,6 +773,7 @@ def main():
     pack_path = None
     tokens = None
     label = "prompt"
+    verified_model_name = None
 
     if args.target:
         target = Path(args.target).resolve()
@@ -787,9 +836,11 @@ def main():
                     print(f"  현재 pill: {read_model_pills(page)}")
                     if args.model:
                         print(f"  모델/추론단계 선택: '{args.model}'"
-                              + (f" (모델명 검증='{args.require_model}')" if args.require_model else ""))
-                        if not select_model(page, args.model, require_model=args.require_model) and args.require_model:
-                            raise RuntimeError(f"모델 검증 실패('{args.require_model}') — 전송 중단")
+                               + (f" (모델명 검증='{args.require_model}')" if args.require_model else ""))
+                        verified, v_name = select_model(page, args.model, require_model=args.require_model)
+                        if not verified:
+                            raise RuntimeError(f"모델/추론단계 검증 실패 (model={args.model}, require={args.require_model}) — 전송 중단")
+                        verified_model_name = v_name
 
                     # 본문은 '첨부'로 — 확인 안 되면 fail-closed (잘못된 컨텍스트로 리뷰 방지)
                     if pack_path is not None:
@@ -835,7 +886,8 @@ def main():
     resp_path = out_dir / f"response_{label}_{run_tag}.md"
     pack_line = (f"- 패킹: `{pack_path.name}`" + (f" (~{tokens:,} tokens)\n" if tokens else "\n")
                  if pack_path is not None else "- 패킹: (없음 / 프롬프트-only)\n")
-    body = (f"# {label} — GPT 응답 (구독 ChatGPT)\n\n" + pack_line
+    model_line = f"- 모델: `{verified_model_name}`\n" if verified_model_name else ""
+    body = (f"# {label} — GPT 응답 (구독 ChatGPT)\n\n" + pack_line + model_line
             + f"- 프롬프트: {prompt[:80]}...\n\n---\n\n{response}\n")
     tmp = resp_path.with_suffix(".md.tmp")
     tmp.write_text(body, encoding="utf-8")
