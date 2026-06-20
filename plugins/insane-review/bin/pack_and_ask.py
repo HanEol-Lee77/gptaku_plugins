@@ -496,19 +496,31 @@ def click_send(page) -> bool:
 
 
 def click_answer_now(page) -> bool:
-    """리즈닝 중 '지금 답변 받기'(또는 영어/변형)를 눌러 강제 답변. 한국어 UI 종속 완화."""
-    answer_pats = [
-        ("지금 답변 받기", True), ("지금 답변받기", True),
-        ("답변 받기", False), ("바로 답변", False),
-        ("Get answer", False), ("Skip", False), ("answer now", False),
-    ]
-    chip_re = re.compile(r"생각\s*중|thinking|reasoning|추론", re.I)
+    """리즈닝 중 '지금 답변 받기'를 눌러 강제 답변.
+    실측: 버튼은 리즈닝 flyout 최상단(우측 패널). 패널이 아래로 스크롤되면 버튼이 밀려나므로
+    스크롤 컨테이너를 top으로 올린 뒤 scroll_into_view 후 클릭한다.
+    칩 매칭은 '생각 중'으로 좁힌다 — 프롬프트 본문의 '추론' 등과 오매칭 방지."""
+    answer_pats = [("지금 답변 받기", True), ("지금 답변받기", True),
+                   ("답변 받기", False), ("Get answer", False), ("answer now", False)]
+    chip_re = re.compile(r"생각\s*중|Thinking", re.I)
+
+    def scroll_panels_top():
+        try:
+            page.evaluate("() => { for (const el of document.querySelectorAll('*')) "
+                          "{ if (el.scrollHeight > el.clientHeight + 20) el.scrollTop = 0; } }")
+        except Exception:
+            pass
 
     def try_answer() -> bool:
+        scroll_panels_top()
         for txt, exact in answer_pats:
             try:
                 loc = page.get_by_text(txt, exact=exact)
                 if loc.count() > 0:
+                    try:
+                        loc.first.scroll_into_view_if_needed(timeout=2000)
+                    except Exception:
+                        pass
                     loc.first.click(timeout=2500)
                     return True
             except Exception:
@@ -517,12 +529,12 @@ def click_answer_now(page) -> bool:
 
     if try_answer():
         return True
-    # 리즈닝 칩을 눌러 패널을 연 뒤 재시도
+    # 리즈닝 칩(좁은 매칭)을 눌러 패널을 연 뒤 재시도
     try:
         chip = page.get_by_text(chip_re)
         if chip.count() > 0:
             chip.first.click(timeout=2500)
-            time.sleep(1.0)
+            time.sleep(1.2)
     except Exception:
         pass
     return try_answer()
