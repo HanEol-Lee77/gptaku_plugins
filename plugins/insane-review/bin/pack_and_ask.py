@@ -64,7 +64,7 @@ LOGIN_WALL_SELECTORS = [
     'button:has-text("Log in")',
 ]
 
-MAX_WAIT_SECS = 1200   # Pro 긴 thinking 대비(20분)
+MAX_WAIT_SECS = int(os.environ.get("INSANE_REVIEW_MAX_WAIT", "1200"))  # 기본 20분(--max-wait/env로 변경)
 MIN_WAIT_SECS = 20
 STABLE_CHECK_SECS = 8
 STATUS_INTERVAL = 15
@@ -479,17 +479,20 @@ def put_text(page, message: str):
 
 
 def click_send(page) -> bool:
-    for sel in SEND_BTN_SELECTORS:
-        try:
-            btn = page.query_selector(sel)
-            if btn and btn.is_enabled():
-                btn.click()
-                print("  ✓ 전송 버튼 클릭")
-                time.sleep(1)
-                return True
-        except Exception:
-            continue
-    print("  ⚠️  전송 버튼 못 찾음 → Enter 폴백")
+    """전송 버튼이 visible·enabled 될 때까지 폴링 후 클릭(첨부 처리 시간 대비). 끝까지 안 되면 Enter."""
+    for _ in range(15):  # 최대 ~15s 대기
+        for sel in SEND_BTN_SELECTORS:
+            try:
+                btn = page.query_selector(sel)
+                if btn and btn.is_visible() and btn.is_enabled():
+                    btn.click()
+                    print("  ✓ 전송 버튼 클릭")
+                    time.sleep(1)
+                    return True
+            except Exception:
+                continue
+        time.sleep(1)
+    print("  ⚠️  전송 버튼이 enabled 안 됨 → Enter 폴백")
     page.keyboard.press("Enter")
     time.sleep(1)
     return False
@@ -540,9 +543,10 @@ def click_answer_now(page) -> bool:
     return try_answer()
 
 
-def wait_for_turn_response(page, force_after=None) -> tuple[str, str]:
+def wait_for_turn_response(page, force_after=None, max_wait=None) -> tuple[str, str]:
     """새 채팅(턴 1개) 기준 응답 회수.
     반환: (status, text) — status ∈ {'ok','timeout','not_sent'}."""
+    mw = max_wait if max_wait else MAX_WAIT_SECS
     start = time.monotonic()
     last_status = 0
     force_tries = 0
@@ -558,11 +562,11 @@ def wait_for_turn_response(page, force_after=None) -> tuple[str, str]:
         return ("not_sent", "")
 
     # 2) assistant 턴 완료까지 대기 (stop-button 사라짐 + copy 버튼 + 텍스트 안정)
-    print(f"    응답 대기 중... (최대 {MAX_WAIT_SECS}s"
+    print(f"    응답 대기 중... (최대 {mw}s"
           + (f", {force_after}s 후 '지금 답변 받기' 재시도" if force_after else "") + ")")
     stable_since = None
     last_text = ""
-    while time.monotonic() - start < MAX_WAIT_SECS:
+    while time.monotonic() - start < mw:
         elapsed = int(time.monotonic() - start)
 
         # force-answer: 성공할 때까지 매 틱 재시도(상한). 실패해도 latch 안 함.
@@ -659,6 +663,8 @@ def main():
                     help='모델명 검증(예: "GPT-5.5") — 불일치 시 전송 중단')
     ap.add_argument("--force-answer-after", type=int, default=None,
                     help="N초 후 리즈닝 중이면 '지금 답변 받기' 재시도")
+    ap.add_argument("--max-wait", type=int, default=None,
+                    help=f"응답 최대 대기 초(기본 {MAX_WAIT_SECS}=20분; env INSANE_REVIEW_MAX_WAIT로도 설정)")
     ap.add_argument("--browser", default="comet", choices=["comet", "chrome"])
     ap.add_argument("--pack-only", action="store_true")
     ap.add_argument("--keep-pack", action="store_true", help="전송 후 패킹 파일 보존(기본은 유지; 끄려면 --delete-pack)")
@@ -761,7 +767,8 @@ def main():
 
                     put_text(page, prompt)
                     click_send(page)
-                    status, text = wait_for_turn_response(page, force_after=args.force_answer_after)
+                    status, text = wait_for_turn_response(page, force_after=args.force_answer_after,
+                                                          max_wait=args.max_wait)
                     if status == "not_sent":
                         print("  ⚠️  user 턴 미생성(전송 안 됨) → 재시도")
                         continue
