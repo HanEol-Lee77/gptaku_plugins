@@ -70,7 +70,10 @@ STABLE_CHECK_SECS = 8
 STATUS_INTERVAL = 15
 FORCE_MAX_TRIES = 6    # force-answer 클릭 재시도 상한
 
-OUT_DIR = Path(__file__).parent / "out"
+# 출력은 '실행한 현재 프로젝트'의 .insane-review/ 에 저장(플러그인 내부 X — kkirikkiri의 .kkirikkiri 패턴).
+# env INSANE_REVIEW_OUT 또는 --out-dir로 오버라이드.
+OUT_DIR = Path(os.environ["INSANE_REVIEW_OUT"]).expanduser() if os.environ.get("INSANE_REVIEW_OUT") \
+    else Path.cwd() / ".insane-review"
 
 DEFAULT_PROMPT = (
     "첨부는 repomix로 패킹한 코드베이스입니다. 다음을 한국어로 분석해줘:\n"
@@ -697,6 +700,8 @@ def main():
     ap.add_argument("--pack-only", action="store_true")
     ap.add_argument("--keep-pack", action="store_true", help="전송 후 패킹 파일 보존(기본은 유지; 끄려면 --delete-pack)")
     ap.add_argument("--delete-pack", action="store_true", help="응답 회수 후 패킹 파일 삭제(시크릿 위생)")
+    ap.add_argument("--out-dir", default=None,
+                    help="출력 저장 폴더(기본: 현재 프로젝트의 .insane-review/; env INSANE_REVIEW_OUT)")
     ap.add_argument("--check-env", action="store_true")
     ap.add_argument("--install", action="store_true")
     ap.add_argument("--council", action="store_true",
@@ -712,7 +717,9 @@ def main():
     if args.council:
         sys.stdout = sys.stderr
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_dir = Path(args.out_dir).expanduser() if args.out_dir else OUT_DIR
+    out_dir.mkdir(parents=True, exist_ok=True)
+    print(f"  출력 폴더: {out_dir}")
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     run_tag = f"{ts}_{os.getpid()}_{uuid.uuid4().hex[:6]}"  # 동시 실행 충돌 방지
     pack_path = None
@@ -725,7 +732,7 @@ def main():
             sys.exit(f"❌ 대상 폴더 없음: {target}")
         label = re.sub(r"[^A-Za-z0-9_.-]", "-", target.name)
         ext = {"xml": "xml", "markdown": "md", "plain": "txt"}[args.style]
-        pack_path = OUT_DIR / f"pack_{label}_{run_tag}.{ext}"
+        pack_path = out_dir / f"pack_{label}_{run_tag}.{ext}"
         print(f"\n[1/3] repomix 패킹 — {label}")
         pack_path, tokens = pack_repo(
             target, include=args.include, ignore=args.ignore, compress=args.compress,
@@ -825,7 +832,7 @@ def main():
         except OSError:
             pass
 
-    resp_path = OUT_DIR / f"response_{label}_{run_tag}.md"
+    resp_path = out_dir / f"response_{label}_{run_tag}.md"
     pack_line = (f"- 패킹: `{pack_path.name}`" + (f" (~{tokens:,} tokens)\n" if tokens else "\n")
                  if pack_path is not None else "- 패킹: (없음 / 프롬프트-only)\n")
     body = (f"# {label} — GPT 응답 (구독 ChatGPT)\n\n" + pack_line
