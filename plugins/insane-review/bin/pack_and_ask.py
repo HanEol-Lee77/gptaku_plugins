@@ -417,11 +417,11 @@ def select_model(page, want: str, require_model: str | None = None) -> bool:
             pass
         return False
 
-    # 검증: pill 또는 재오픈 메뉴에서 선택 상태 확인
+    # 검증: pill에서 선택 상태 확인. 미확인이면 False(호출부가 require_model일 때 중단)
     pills = read_model_pills(page)
     verified = any(want_l in p.lower() for p in pills)
-    print(f"  ✓ 추론단계 선택: '{clicked}' | pill={pills} | 검증={'OK' if verified else '미확인'}")
-    return True
+    print(f"  {'✓' if verified else '⚠️'} 추론단계 선택: '{clicked}' | pill={pills} | 검증={'OK' if verified else '미확인'}")
+    return verified
 
 
 # ---- 첨부 / 입력 / 전송 ----
@@ -444,10 +444,10 @@ def attach_file(page, path: Path) -> bool:
                     return True
             except Exception:
                 pass
-        print("  ⚠️  첨부 칩(파일명) 확인 못함(그래도 진행 시도)")
-        return True
+        print("  ❌ 첨부 칩(파일명) 확인 실패 — fail-closed (잘못된 컨텍스트 전송 방지)")
+        return False
     except Exception as exc:
-        print(f"  ⚠️  첨부 실패({str(exc)[:60]}) → 붙여넣기 폴백")
+        print(f"  ❌ 첨부 실패({str(exc)[:60]})")
         return False
 
 
@@ -755,15 +755,10 @@ def main():
                         if not select_model(page, args.model, require_model=args.require_model) and args.require_model:
                             raise RuntimeError(f"모델 검증 실패('{args.require_model}') — 전송 중단")
 
-                    # 본문은 첨부, 입력창엔 짧은 프롬프트
+                    # 본문은 '첨부'로 — 확인 안 되면 fail-closed (잘못된 컨텍스트로 리뷰 방지)
                     if pack_path is not None:
-                        attached = attach_file(page, pack_path)
-                        if not attached:
-                            if args.attach:
-                                raise RuntimeError("파일 첨부 실패(--attach 강제)")
-                            print("  본문 붙여넣기 폴백")
-                            put_text(page, pack_path.read_text(encoding="utf-8"))
-                            time.sleep(2)
+                        if not attach_file(page, pack_path):
+                            raise RuntimeError("코드 첨부 확인 실패 → 중단(fail-closed)")
 
                     put_text(page, prompt)
                     click_send(page)
@@ -772,8 +767,13 @@ def main():
                     if status == "not_sent":
                         print("  ⚠️  user 턴 미생성(전송 안 됨) → 재시도")
                         continue
-                    if text:
+                    if status == "timeout":
+                        print("  ⚠️  타임아웃 — 미완성 응답은 성공저장 안 함(fail-closed) → 재시도")
+                        continue
+                    if status == "ok" and text and len(text.strip()) >= 40:
                         response = text
+                    else:
+                        print(f"  ⚠️  응답 비었거나 너무 짧음(status={status}) → 재시도")
                 finally:
                     try:
                         page.close()

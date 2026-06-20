@@ -25,14 +25,15 @@ description: GPT-5.5 Pro(웹 전용·API 없음)를 Claude Code 안에서 활용
 - 사용자가 지목한 파일/기능에서 시작.
 - **관련 확장**: import/require 추적, 호출자·피호출자(grep 또는 LSP `find_references`/`goto_definition`), 관련 테스트, 타입 정의.
 - 결과를 **정확한 파일 목록**(→ `--stdin`) 또는 **글롭**(→ `--include "src/auth/**,*.test.ts"`)으로 만든다.
-- 큰 코드 본문은 `--compress`(tree-sitter 골격, 토큰 ~74%↓ — 단 **코드 파일만**, 마크다운엔 효과 없음).
+- **코드 리뷰/원인분석은 풀 코드로 보내라 — `--compress` 쓰지 마라.** 압축은 함수 본문(조건·early return·예외·루프 = 버그 판단 근거)을 제거해 리뷰 AI가 구현을 *상상*하게 만든다(실측: 본문 58% 손실 → false-positive·fail-open 폭증). 멀티 AI 합의(GPT-5.5 Pro·codex·agy·gjc)로 확정.
+- 타겟이 너무 커서 컨텍스트를 넘기면 **압축하지 말고 `--include`로 관련 파일만 좁혀 풀로** 보낸다. `--compress`는 오직 "큰 레포 *개요*"(정확성 리뷰 아님)용.
 
 ### 3) 패킹 + 투입 + 회수 — 스크립트 실행
 ```bash
 python3 <plugin>/bin/pack_and_ask.py \
-  --target <repo_root> --include "<globs>" --compress \
-  --model pro --force-answer-after 120 \
-  --prompt "<의도를 담은 정확한 질문>"
+  --target <repo_root> --include "<관련 파일 글롭>" \
+  --model pro --require-model "GPT-5.5" \
+  --prompt "<의도를 담은 정확한 질문 — '판정마다 파일/라인/코드조각을 인용하라'를 반드시 포함>"
 ```
 또는 정확한 파일 목록을 직접 줄 때(레포를 cwd로):
 ```bash
@@ -53,7 +54,8 @@ python3 <plugin>/bin/pack_and_ask.py --model pro --force-answer-after 90 \
 
 - **git submodule**: 부모 레포 루트에서 서브모듈 파일은 repomix가 제외한다. 서브모듈 안에서 실행하거나 `--target <submodule>` 또는 `--no-gitignore --no-default-patterns`.
 - **압축은 코드 파일만** 줄인다(마크다운/문서 위주 폴더엔 무효).
-- **Pro 리즈닝은 길다(수 분~수십 분).** `--force-answer-after N`으로 N초 후 "지금 답변 받기"를 눌러 강제 종료·회수. 스크립트 MAX_WAIT는 20분.
+- **정밀 리뷰엔 `--force-answer-after`를 쓰지 마라** — Pro 추론을 중간에 끊어 "다 생각 안 한 채" 답하게 만든다(gjc 지적, fail-open과 곱해져 미완성 답을 정답 저장). 완전 추론이 더 정확. 안전장치는 `--max-wait`(기본 20분, env/`--max-wait`로 조절)만. force-answer는 빠른 의견·짧은 질문에만.
+- **fail-closed**: 첨부 미확인 / 모델 미검증(`--require-model`) / timeout·빈 응답은 **성공 저장 안 하고 중단·재시도**한다(잘못된 컨텍스트나 미완성 답을 리뷰로 저장하지 않음).
 - 큰 콘텐츠는 **파일 첨부**로 들어간다(붙여넣기 X). 스크립트가 자동 처리.
 - 실패 시 `--retries N`으로 전송/회수를 재시도.
 
