@@ -46,6 +46,14 @@ python3 <plugin>/bin/pack_and_ask.py --model pro --force-answer-after 90 \
   --prompt "<질문>"
 ```
 
+### 3.5) 누락 검증 — **빠진 파일 없는지 감사**
+패킹 직후 출력의 **`📦 패킹 포함 N개 파일: ...`** 목록이 **의도한 관련 파일을 전부 담았는지** 확인한다. 빠진 게 있으면 repomix가 떨어뜨린 것 — 원인별 대응:
+- `🔒 secretlint: 의심 파일 N개 제외` → **시크릿 든 파일이 통째 빠짐**(숨은 누락). 그 파일이 리뷰 대상이면 시크릿을 가린 사본을 따로 넣거나 `--no-security-check`(외부 유출 주의).
+- 기본 ignore/`.gitignore`가 떨어뜨림 → `--no-default-patterns`/`--no-gitignore`.
+- 서브모듈 파일이 빠짐(부모서 패킹) → 서브모듈 안에서 `--target`.
+- `⚠️ pack이 큼(truncation)` 경고 → ChatGPT가 잘라먹을 수 있으니 `--include`로 더 좁히거나 여러 번 나눠 보낸다.
+- **손실 플래그 금지**: `--compress`/`--remove-comments`/`--remove-empty-lines`는 내용을 누락시키니 리뷰엔 쓰지 않는다. 라인번호는 기본 ON(인용용).
+
 ### 4) 회수 & 반영
 - 응답은 `<plugin>/bin/out/response_*.md`에 저장되고, stdout 끝에 미리보기가 나온다.
 - 그 의견을 읽고 **GPT-5.5 Pro의 의견임을 명시**하여 사용자에게 반영/요약한다. 동의/이견을 너의 판단과 함께 제시하라.

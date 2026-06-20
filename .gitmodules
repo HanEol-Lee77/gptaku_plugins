@@ -8,7 +8,7 @@
 	path = plugins/vibe-sunsang
 	url = https://github.com/fivetaku/vibe-sunsang.git
 [submodule "plugins/deep-research"]
-	path = plugins/deep-research
+	path = plugins/insane-research
 	url = https://github.com/fivetaku/deep-research-kit.git
 [submodule "plugins/pumasi"]
 	path = plugins/pumasi

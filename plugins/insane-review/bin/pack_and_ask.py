@@ -86,12 +86,18 @@ DEFAULT_PROMPT = (
 # ===========================================================================
 def pack_repo(target: Path, *, include: str | None, ignore: str | None,
               compress: bool, style: str, token_budget: int | None,
-              out_path: Path) -> tuple[Path, int | None]:
+              out_path: Path, line_numbers: bool = True) -> tuple[Path, int | None]:
     if shutil.which("npx") is None:
         sys.exit("❌ npx가 없습니다. Node.js를 설치하세요.")
 
+    if compress:
+        print("  ⚠️  --compress: 함수 본문이 제거된다(시그니처 골격만). 정확성 리뷰/원인분석엔 부적합 —\n"
+              "       리뷰면 끄고, 너무 크면 --include로 관련 파일만 좁혀 풀로 보내라.")
+
     spec = f"repomix@{REPOMIX_VERSION}" if REPOMIX_VERSION else "repomix@latest"
     cmd = ["npx", "-y", spec, str(target), "-o", str(out_path), "--style", style]
+    if line_numbers:
+        cmd.append("--output-show-line-numbers")  # AI가 파일:라인 인용 가능 → 근거 강제에 필요
     if compress:
         cmd.append("--compress")
     if include:
@@ -136,6 +142,25 @@ def pack_repo(target: Path, *, include: str | None, ignore: str | None,
     size = out_path.stat().st_size
     print(f"  ✓ 패킹 완료: {out_path.name}  ({size:,} bytes"
           + (f", ~{tokens:,} tokens)" if tokens else ")"))
+
+    # 누락 검증(감사): 패킹된 파일 수/목록 노출 → 빠진 게 있으면 눈에 띄게
+    mf = re.search(r"Total Files:\s*([\d,]+)", out)          # repomix stdout(신뢰가능 카운트)
+    n_files = int(mf.group(1).replace(",", "")) if mf else None
+    flist = []
+    try:
+        body = out_path.read_text(encoding="utf-8", errors="replace")
+        if style == "markdown":                              # 구조 헤더 '## File:'는 컬럼0(라인번호 없음)
+            flist = re.findall(r"(?m)^## File:\s+(.+?)\s*$", body)
+    except OSError:
+        pass
+    cnt = n_files if n_files is not None else len(flist)
+    shown = (": " + ", ".join(flist[:10]) + (f" … (+{len(flist) - 10})" if len(flist) > 10 else "")) if flist else ""
+    print(f"  📦 패킹 포함 {cnt}개 파일{shown}")
+    if compress:
+        print("  ⚠️  위 파일들은 본문이 압축됨(⋮----) — 제어흐름 누락. 리뷰엔 부적합.")
+    if tokens and tokens > 120_000:
+        print(f"  ⚠️  pack이 큼(~{tokens:,} 토큰) — ChatGPT 웹에서 잘릴(truncation) 수 있다. "
+              "--include로 좁히거나 여러 번 나눠 보내라.")
     return out_path, tokens
 
 
@@ -652,7 +677,10 @@ def main():
     ap.add_argument("--target", default=None, help="분석 대상 폴더(생략 시 프롬프트만 = 의견 모드)")
     ap.add_argument("--include", default=None, help='repomix --include 글롭')
     ap.add_argument("--ignore", default=None, help="repomix --ignore 글롭")
-    ap.add_argument("--compress", action="store_true", help="tree-sitter 골격만(토큰 절감)")
+    ap.add_argument("--compress", action="store_true",
+                    help="tree-sitter 골격만(토큰 절감) — 본문 제거되니 정확성 리뷰엔 쓰지 마라")
+    ap.add_argument("--no-line-numbers", action="store_true",
+                    help="라인번호 prefix 끄기(기본 on — AI가 파일:라인 인용하도록)")
     ap.add_argument("--style", default="markdown", choices=["xml", "markdown", "plain"])
     ap.add_argument("--token-budget", type=int, default=None)
     ap.add_argument("--attach", action="store_true", help="첨부 강제(폴백 붙여넣기 비활성)")
@@ -701,7 +729,8 @@ def main():
         print(f"\n[1/3] repomix 패킹 — {label}")
         pack_path, tokens = pack_repo(
             target, include=args.include, ignore=args.ignore, compress=args.compress,
-            style=args.style, token_budget=args.token_budget, out_path=pack_path)
+            style=args.style, token_budget=args.token_budget, out_path=pack_path,
+            line_numbers=not args.no_line_numbers)
         if args.pack_only:
             print(f"\n[pack-only] 산출물: {pack_path}")
             return
