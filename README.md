@@ -1,106 +1,238 @@
-English | [한국어](README.ko.md)
+English | [한국어](README.ko.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [Español](README.es.md)
 
-# gptaku-plugins
+<div align="center">
 
-> **A Claude Code plugin marketplace for people who want to become AI Native.**
+# GPTaku Plugins
 
-Being AI Native isn't about using AI as a tool — it's about weaving AI naturally into every step from planning to execution. That takes practice, and it takes tools built for people who are learning. These plugins exist to remove specific walls you hit along the way.
+**Stop explaining what you want — let Claude Code do it.**
 
-[Quick Start](#quick-start) • [Plugins](#available-plugins) • [Why these?](#why-these-plugins) • [Requirements](#requirements)
+14 plugins that search blocked sites, rip design systems from any URL,
+review your code, and turn rough ideas into PRDs — all inside Claude Code.
+
+<p>
+  <a href="#-all-plugins-by-category"><img src="https://img.shields.io/badge/plugins-14-6E56CF" alt="14 plugins"></a>
+  <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/platform-Claude_Code-D97757?logo=claude" alt="Claude Code"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-3FB950" alt="MIT"></a>
+  <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
+</p>
+
+<!-- Purpose-first hero banner with light/dark theme support -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-purpose-wallbreak.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/hero-purpose-wallbreak.png">
+  <img src="assets/hero-purpose-wallbreak.png" width="980" alt="GPTaku Plugins cinematic hero showing a plugin drill breaking through Claude Code limits">
+</picture>
+
+<sub><a href="#-install">Install</a> · <a href="#-start-here--the-insane-series">Start here</a> · <a href="#-all-plugins-by-category">All plugins</a> · <a href="#-trust--setup">Trust</a></sub>
+
+</div>
 
 ---
 
-## Quick Start
+## ⚡ Install
 
-### 1. Add the marketplace (one-time)
+Run these inside Claude Code:
 
-```
+```bash
+# 1) Add the marketplace once
 /plugin marketplace add https://github.com/fivetaku/gptaku_plugins.git
+
+# 2) Start with the lowest-friction flagship
+/plugin install insane-search@gptaku-plugins
+
+# 3) Apply without restarting the whole app
+/reload-plugins
 ```
 
-### 2. Install a plugin
-
-```
-/plugin install
-```
-
-Pick from the list, or install a specific one by name:
-
-```
-/plugin install show-me-the-prd
-```
-
-> **One plugin at a time.** Install multiple plugins by repeating the command.
-
-### 3. Restart Claude Code
-
-After install or update, restart Claude Code to activate the plugin.
-
-### 4. Update when needed
-
-```
-/plugin update
-```
+**New here? Install `insane-search` first.** Most plugins need only a running Claude Code session — a few connect an external service ([see Trust & setup](#-trust--setup)).
 
 ---
 
-## Why these plugins?
+## 🔥 Start here — the insane-* series
 
-- **Built for learners, not experts** — If you don't know Git, `git-teacher` uses cloud-service analogies. If you can't write a PRD, `show-me-the-prd` interviews you
-- **No API keys, no signup loops** — Every plugin works the moment you install it. No developer portal, no OAuth, no env vars
-- **Outcomes over features** — Each plugin solves a specific wall (blocked websites, PRD from scratch, parallel coding, deep research) instead of being a generic toolkit
-- **Korean-first, English-available** — Built in Korean, every plugin ships bilingual docs
-- **Composable** — Plugins don't conflict. Install what you need, ignore the rest
+> The flagship four. They break through the walls everything else stops at.
+
+### 🔎 insane-search · ⭐ 770+
+**When Claude Code can't read a blocked page, this gets in anyway.**
+Hit a WAF, 403, CAPTCHA, or login wall? It escalates through public API readers, syndication gateways, TLS impersonation, and a real headless browser, trying each until one gets through. No API keys.
+
+```bash
+/plugin install insane-search@gptaku-plugins
+```
+> **Try:** *"Find what people are saying about Claude Code on Reddit and summarize the top threads."*
+
+### 🎨 insane-design
+**Rips the design system out of any website. In one command.**
+It reads the real CSS and pulls what matters: color, type, spacing, radius, shadow, fonts. Out comes a clean token set, a `design.md` spec, and a click-to-copy HTML report.
+
+```bash
+/plugin install insane-design@gptaku-plugins
+```
+> **Try:** *"Extract the design system from https://stripe.com"*
+
+### 🧠 insane-review
+**GPT-5.5 Pro has no API. This plugin uses it from inside Claude Code anyway.**
+It packs the relevant code with `repomix`, runs it through your logged-in ChatGPT Pro web session, and brings back a line-by-line review.
+
+```bash
+/plugin install insane-review@gptaku-plugins
+```
+> **Try:** *"Have GPT-5.5 Pro review the auth flow in src/auth."*
+
+### 📚 insane-research
+**One question in. A cited, multi-agent research report out.**
+A 7-phase pipeline: it scopes the question, spawns specialized research agents, grades and cross-checks every source, then compiles a structured Markdown report.
+
+```bash
+/plugin install insane-research@gptaku-plugins
+```
+> **Try:** *"Research the best vector database for RAG in 2026, with citations."*
 
 ---
 
-## Available Plugins
+## 🧭 Pick by the wall you hit
 
-| Plugin | Description |
-|--------|-------------|
-| [insane-research](https://github.com/fivetaku/insane-research) | Multi-agent deep research — 7-phase pipeline with source triangulation and quality ratings |
-| [insane-search](https://github.com/fivetaku/insane-search) | Auto-bypass for blocked websites — Phase 0→3 adaptive scheduler, no API keys |
-| [insane-design](https://github.com/fivetaku/insane-design) | Analyze any website's CSS into a design system — design tokens from URL |
-| [insane-review](https://github.com/fivetaku/insane-review) | GPT-5.5 Pro (web-only, no API) code review from inside Claude Code — repomix-pack relevant code, harvest the review via ChatGPT Pro |
-| [docs-guide](https://github.com/fivetaku/docs-guide) | Accurate answers grounded in official documentation — llms.txt standard + 68+ libraries |
-| [git-teacher](https://github.com/fivetaku/git-teacher) | Git/GitHub onboarding for non-developers — cloud-service analogies in 5 steps |
-| [vibe-sunsang](https://github.com/fivetaku/vibe-sunsang) | AI mentoring agent for vibecoders — conversation analysis, mentoring, growth reports |
-| [pumasi](https://github.com/fivetaku/pumasi) | Claude as PM + Codex CLI as parallel outsource developers — for large parallel coding tasks |
-| [show-me-the-prd](https://github.com/fivetaku/show-me-the-prd) | Interview-based PRD generator — one sentence in, 4 design documents out |
-| [kkirikkiri](https://github.com/fivetaku/kkirikkiri) | Auto-assemble AI agent teams from natural language — multi-model support |
-| [skillers-suda](https://github.com/fivetaku/skillers-suda) | 4 expert agents debate your idea into a working Claude Code skill |
-| [nopal](https://github.com/fivetaku/nopal) | Google Workspace orchestration — 9 services composed via natural language |
-| [goaljaby](https://github.com/fivetaku/goaljaby) | PRD-to-/goal bridge for Claude Code — 5 Korean review docs + chat review summary, goal starts on the next turn after your approval |
-| [dd](https://github.com/fivetaku/dd) | Drop the current clipboard (text or image) into Claude Code with /dd or /ㅇㅇ — long pastes and screenshots stay out of the chat |
+<div align="center">
+  <img src="assets/flow-transform.png" width="980" alt="Before-to-after map showing Claude Code walls routed through GPTaku Plugins into unlocked web, pro review, AI-ready PRD, lean context, and agent team outcomes">
+</div>
 
-> More plugins are added regularly. Watch the repo to get notified of new releases.
+| If Claude Code gets stuck on... | Install this |
+| :--- | :--- |
+| A blocked public page, empty HTML, or platform-specific web content | `insane-search` |
+| Code review that needs another strong model | `insane-review` |
+| A website style you want to reuse accurately | `insane-design` |
+| A broad research question that needs citations | `insane-research` |
+| A vague app idea with no product spec | `show-me-the-prd` |
+| A PRD that needs a verified `/goal` execution contract | `goaljaby` |
+| A large build that should be split across workers | `pumasi` or `kkirikkiri` |
+| A screenshot, long log, or copied reference | `dd` |
+| A library/API question that needs official docs | `docs-guide` |
+| Gmail, Calendar, Drive, Docs, Sheets, Slides, Chat, Tasks, or Meet | `nopal` |
+| GitHub feels like a foreign language | `git-teacher` |
+| You want to improve how you work with Claude Code | `vibe-sunsang` |
+| You want to create your own plugin/skill/agent | `skillers-suda` |
+
+---
+
+## 🔒 Trust & setup
+
+Most plugins need only a running Claude Code session — **no additional API key.** The few exceptions that connect to external services say so up front:
+
+<table width="100%">
+<tr>
+  <td width="25%"><strong>Claude Code only</strong><br><em>(No credentials needed)</em></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+</tr>
+<tr>
+  <td width="25%"><strong>Google Workspace OAuth</strong></td>
+  <td><code>nopal</code> (requires a Google account and a one-time login validation through the <code>gws</code> CLI)</td>
+</tr>
+<tr>
+  <td width="25%"><strong>Logged-in Browser Session</strong></td>
+  <td><code>insane-review</code> (requires an active, logged-in ChatGPT Plus/Pro web session; no API keys)</td>
+</tr>
+<tr>
+  <td width="25%"><strong>External CLI</strong></td>
+  <td><code>pumasi</code> (requires the Codex CLI to be installed on your host system)</td>
+</tr>
+</table>
+
+All plugins are open source. Every submodule README lists its exact command boundaries, skills, and dependencies.
+
+---
+
+## 📦 All plugins by category
+
+### 🔎 Research & web
+<table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-search">insane-search</a></strong></td>
+  <td>Auto-bypass for blocked websites — WAF/403/CAPTCHA, no API keys.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-research">insane-research</a></strong></td>
+  <td>Multi-agent deep research — source-triangulated, citation-backed.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/docs-guide">docs-guide</a></strong></td>
+  <td>Answers grounded in official docs — llms.txt + 68 libraries.</td>
+</tr>
+</table>
+
+### 🎨 Design & quality
+<table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-design">insane-design</a></strong></td>
+  <td>Any URL → design tokens + <code>design.md</code> + interactive HTML report.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-review">insane-review</a></strong></td>
+  <td>GPT-5.5 Pro code review from inside Claude Code (no API).</td>
+</tr>
+</table>
+
+### 🚀 Plan & ship
+<table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/show-me-the-prd">show-me-the-prd</a></strong></td>
+  <td>One sentence → 4 design documents (PRD, data model, phases, project spec).</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/goaljaby">goaljaby</a></strong></td>
+  <td>PRD → reviewed <code>/goal</code> workflow execution contract.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/pumasi">pumasi</a></strong></td>
+  <td>Claude Code as PM + Codex CLI as a parallel dev team.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/kkirikkiri">kkirikkiri</a></strong></td>
+  <td>Assemble an AI agent team from a single sentence.</td>
+</tr>
+</table>
+
+### 🌱 Learn & build better
+<table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/git-teacher">git-teacher</a></strong></td>
+  <td>Git/GitHub onboarding via cloud-service analogies.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/vibe-sunsang">vibe-sunsang</a></strong></td>
+  <td>AI mentor — conversation analysis + growth reports.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/skillers-suda">skillers-suda</a></strong></td>
+  <td>4 expert agents debate your idea into a working skill.</td>
+</tr>
+</table>
+
+### ⚙️ Workspace
+<table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/nopal">nopal</a></strong></td>
+  <td>Google Workspace orchestration — 9 services.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/dd">dd</a></strong></td>
+  <td>Drop clipboard text/image into Claude Code (<code>/dd</code>, <code>/ㅇㅇ</code>).</td>
+</tr>
+</table>
 
 ---
 
 ## Requirements
 
-- **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** only — no support for Codex, Antigravity, or other AI coding tools
-- **Windows**: run Claude Code on WSL2 (`wsl --install`)
-- **macOS / Linux**: works out of the box
+- **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** only — no Codex / Antigravity / other terminal interfaces.
+- **Windows**: Run on WSL2 (`wsl --install`) · **macOS / Linux**: Works out of the box.
+- Some plugins auto-install optional CLI tools (`gh`, `yt-dlp`, Playwright MCP) when needed.
 
-Some plugins require optional tools (like `gh`, `yt-dlp`, or Playwright MCP) — these install automatically when needed.
+## Why GPTaku?
 
----
+Each plugin removes one specific wall you hit while learning to build with AI — a blocked page, a blank PRD, a design you can't reverse-engineer. Korean-first, shipped bilingual, composable, no signup loops.
 
-## Contributing
-
-New plugin ideas or improvements → [Issues](https://github.com/fivetaku/gptaku_plugins/issues).
-
----
+**Become AI Native, one wall at a time.**
 
 ## License
 
 MIT
-
----
-
-<div align="center">
-
-**Become AI Native, one wall at a time.**
-
-</div>
