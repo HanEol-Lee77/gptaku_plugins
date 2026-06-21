@@ -7,9 +7,9 @@
 [submodule "plugins/vibe-sunsang"]
 	path = plugins/vibe-sunsang
 	url = https://github.com/fivetaku/vibe-sunsang.git
-[submodule "plugins/deep-research"]
+[submodule "plugins/insane-research"]
 	path = plugins/insane-research
-	url = https://github.com/fivetaku/deep-research-kit.git
+	url = https://github.com/fivetaku/insane-research.git
 [submodule "plugins/pumasi"]
 	path = plugins/pumasi
 	url = https://github.com/fivetaku/pumasi.git

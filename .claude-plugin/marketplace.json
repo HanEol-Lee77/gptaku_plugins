@@ -48,13 +48,13 @@
       ]
     },
     {
-      "name": "deep-research",
+      "name": "insane-research",
       "description": "AI-powered deep research with multi-agent source verification, 7-phase pipeline, and structured report generation.",
-      "source": "./plugins/deep-research",
+      "source": "./plugins/insane-research",
       "category": "productivity",
       "tags": [
         "research",
-        "deep-research",
+        "insane-research",
         "multi-agent",
         "citations",
         "source-verification",

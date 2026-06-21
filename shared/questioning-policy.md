@@ -61,6 +61,6 @@
 | 🔧 검증+수정 → 적용 | git-teacher | §2a 적용(겁먹은 학습자 multi-turn). 원하면 v2 확인 A/B |
 | ✅ 검증 → 적용 | vibe-sunsang | §2c(과잉코칭 가드) 최우선 |
 | 상속(테스트 불필요) | goaljaby | elicitation 패턴 그대로 |
-| 원칙만 적용 | skillers-suda, deep-research, pumasi, nopal | §1 + §2c |
+| 원칙만 적용 | skillers-suda, insane-research, pumasi, nopal | §1 + §2c |
 | 대부분 현행 | insane-design | 메뉴 선택은 객관식 유지, "추론 가능한 건 안 묻기"만 |
 | 대상 외 | dd, docs-guide, insane-search | 실질 인터뷰 없음 |
