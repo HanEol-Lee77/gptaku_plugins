@@ -1,0 +1,28 @@
+name: validate-commands
+
+# Regression gate: fail CI if any command lists AskUserQuestion under
+# allowed-tools (Claude Code auto-approves it → the question UI never renders).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate command frontmatter
+        run: python3 tools/validate_commands.py
