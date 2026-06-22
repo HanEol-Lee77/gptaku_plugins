@@ -96,21 +96,64 @@ A 7-phase pipeline: it scopes the question, spawns specialized research agents, 
   <img src="assets/flow-transform.png" width="980" alt="Before-to-after map showing Claude Code walls routed through GPTaku Plugins into unlocked web, pro review, AI-ready PRD, lean context, and agent team outcomes">
 </div>
 
-| If Claude Code gets stuck on... | Install this |
-| :--- | :--- |
-| A blocked public page, empty HTML, or platform-specific web content | `insane-search` |
-| Code review that needs another strong model | `insane-review` |
-| A website style you want to reuse accurately | `insane-design` |
-| A broad research question that needs citations | `insane-research` |
-| A vague app idea with no product spec | `show-me-the-prd` |
-| A PRD that needs a verified `/goal` execution contract | `goaljaby` |
-| A large build that should be split across workers | `pumasi` or `kkirikkiri` |
-| A screenshot, long log, or copied reference | `dd` |
-| A library/API question that needs official docs | `docs-guide` |
-| Gmail, Calendar, Drive, Docs, Sheets, Slides, Chat, Tasks, or Meet | `nopal` |
-| GitHub feels like a foreign language | `git-teacher` |
-| You want to improve how you work with Claude Code | `vibe-sunsang` |
-| You want to create your own plugin/skill/agent | `skillers-suda` |
+<table width="100%">
+<tr>
+  <td><strong>If Claude Code gets stuck on...</strong></td>
+  <td width="25%"><strong>Install this</strong></td>
+</tr>
+<tr>
+  <td>A blocked public page, empty HTML, or platform-specific web content</td>
+  <td><code>insane-search</code></td>
+</tr>
+<tr>
+  <td>Code review that needs another strong model</td>
+  <td><code>insane-review</code></td>
+</tr>
+<tr>
+  <td>A website style you want to reuse accurately</td>
+  <td><code>insane-design</code></td>
+</tr>
+<tr>
+  <td>A broad research question that needs citations</td>
+  <td><code>insane-research</code></td>
+</tr>
+<tr>
+  <td>A vague app idea with no product spec</td>
+  <td><code>show-me-the-prd</code></td>
+</tr>
+<tr>
+  <td>A PRD that needs a verified <code>/goal</code> execution contract</td>
+  <td><code>goaljaby</code></td>
+</tr>
+<tr>
+  <td>A large build that should be split across workers</td>
+  <td><code>pumasi</code> or <code>kkirikkiri</code></td>
+</tr>
+<tr>
+  <td>A screenshot, long log, or copied reference</td>
+  <td><code>dd</code></td>
+</tr>
+<tr>
+  <td>A library/API question that needs official docs</td>
+  <td><code>docs-guide</code></td>
+</tr>
+<tr>
+  <td>Gmail, Calendar, Drive, Docs, Sheets, Slides, Chat, Tasks, or Meet</td>
+  <td><code>nopal</code></td>
+</tr>
+<tr>
+  <td>GitHub feels like a foreign language</td>
+  <td><code>git-teacher</code></td>
+</tr>
+<tr>
+  <td>You want to improve how you work with Claude Code</td>
+  <td><code>vibe-sunsang</code></td>
+</tr>
+<tr>
+  <td>You want to create your own plugin/skill/agent</td>
+  <td><code>skillers-suda</code></td>
+</tr>
+</table>
 
 ---
 

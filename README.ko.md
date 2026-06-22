@@ -95,21 +95,64 @@ WAF, 403, CAPTCHA, 로그인 장벽에 막히면 공개 API 리더, 신디케이
   <img src="assets/flow-transform.png" width="980" alt="막힌 벽(왼쪽)을 GPTaku Plugins로 라우팅해 해제된 결과(오른쪽)로 잇는 before→after 맵">
 </div>
 
-| Claude Code가 이 작업을 하다가 막힌다면... | 이 플러그인을 설치하세요 |
-| :--- | :--- |
-| 차단된 웹페이지, 빈 HTML, 또는 특정 플랫폼의 웹 콘텐츠를 읽어야 할 때 | `insane-search` |
-| 더 강력한 모델의 서브 코드 리뷰가 필요할 때 | `insane-review` |
-| 마음에 드는 웹사이트 스타일을 그대로 재사용하고 싶을 때 | `insane-design` |
-| 철저한 검증과 출처 인용이 포함된 심층 리서치가 필요할 때 | `insane-research` |
-| 생각만 있고 구체적인 제품 스펙(PRD)문서가 없을 때 | `show-me-the-prd` |
-| 작성된 PRD를 기반으로 검증된 `/goal` 작업 계약을 체결하고 싶을 때 | `goaljaby` |
-| 대규모 개발 작업을 여러 워커로 나누어 동시 실행하고 싶을 때 | `pumasi` 또는 `kkirikkiri` |
-| 스크린샷, 긴 로그, 혹은 복사해 둔 참고 데이터를 직접 넘기고 싶을 때 | `dd` |
-| 외부 라이브러리나 API 공식 문서를 기반으로 질문하고 싶을 때 | `docs-guide` |
-| Gmail, 캘린더, 드라이브, 문서, 스프레드시트 등 구글 서비스를 연동할 때 | `nopal` |
-| Git과 GitHub 명령어가 어렵게 느껴질 때 | `git-teacher` |
-| Claude Code와의 협업 방식을 교정하고 성과 보고서를 받고 싶을 때 | `vibe-sunsang` |
-| 나만의 플러그인, 스킬, 또는 전문 에이전트를 빌드하고 싶을 때 | `skillers-suda` |
+<table width="100%">
+<tr>
+  <td><strong>Claude Code가 이 작업을 하다가 막힌다면...</strong></td>
+  <td width="25%"><strong>이 플러그인을 설치하세요</strong></td>
+</tr>
+<tr>
+  <td>차단된 웹페이지, 빈 HTML, 또는 특정 플랫폼의 웹 콘텐츠를 읽어야 할 때</td>
+  <td><code>insane-search</code></td>
+</tr>
+<tr>
+  <td>더 강력한 모델의 서브 코드 리뷰가 필요할 때</td>
+  <td><code>insane-review</code></td>
+</tr>
+<tr>
+  <td>마음에 드는 웹사이트 스타일을 그대로 재사용하고 싶을 때</td>
+  <td><code>insane-design</code></td>
+</tr>
+<tr>
+  <td>철저한 검증과 출처 인용이 포함된 심층 리서치가 필요할 때</td>
+  <td><code>insane-research</code></td>
+</tr>
+<tr>
+  <td>생각만 있고 구체적인 제품 스펙(PRD)문서가 없을 때</td>
+  <td><code>show-me-the-prd</code></td>
+</tr>
+<tr>
+  <td>작성된 PRD를 기반으로 검증된 <code>/goal</code> 작업 계약을 체결하고 싶을 때</td>
+  <td><code>goaljaby</code></td>
+</tr>
+<tr>
+  <td>대규모 개발 작업을 여러 워커로 나누어 동시 실행하고 싶을 때</td>
+  <td><code>pumasi</code> 또는 <code>kkirikkiri</code></td>
+</tr>
+<tr>
+  <td>스크린샷, 긴 로그, 혹은 복사해 둔 참고 데이터를 직접 넘기고 싶을 때</td>
+  <td><code>dd</code></td>
+</tr>
+<tr>
+  <td>외부 라이브러리나 API 공식 문서를 기반으로 질문하고 싶을 때</td>
+  <td><code>docs-guide</code></td>
+</tr>
+<tr>
+  <td>Gmail, 캘린더, 드라이브, 문서, 스프레드시트 등 구글 서비스를 연동할 때</td>
+  <td><code>nopal</code></td>
+</tr>
+<tr>
+  <td>Git과 GitHub 명령어가 어렵게 느껴질 때</td>
+  <td><code>git-teacher</code></td>
+</tr>
+<tr>
+  <td>Claude Code와의 협업 방식을 교정하고 성과 보고서를 받고 싶을 때</td>
+  <td><code>vibe-sunsang</code></td>
+</tr>
+<tr>
+  <td>나만의 플러그인, 스킬, 또는 전문 에이전트를 빌드하고 싶을 때</td>
+  <td><code>skillers-suda</code></td>
+</tr>
+</table>
 
 ---
 

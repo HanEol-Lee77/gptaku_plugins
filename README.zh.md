@@ -96,21 +96,64 @@
   <img src="assets/flow-transform.png" width="980" alt="前后对照图：Claude Code 撞上的各种墙，经 GPTaku Plugins 分流，分别通向已解锁的网页、专业级审查、AI 就绪的 PRD、精简的上下文，以及智能体团队等结果">
 </div>
 
-| 如果 Claude Code 卡在了…… | 装这个 |
-| :--- | :--- |
-| 被封锁的公开页面、空白 HTML，或平台专属的网页内容 | `insane-search` |
-| 需要另一个强力模型来做代码审查 | `insane-review` |
-| 想准确复用某个网站的样式 | `insane-design` |
-| 需要附引用的宽泛研究问题 | `insane-research` |
-| 一个模糊的 app 点子，还没有产品规格 | `show-me-the-prd` |
-| 一份需要可验证 `/goal` 执行契约的 PRD | `goaljaby` |
-| 一个该拆给多个工人并行的大型构建 | `pumasi` 或 `kkirikkiri` |
-| 一张截图、一段长日志，或复制好的参考资料 | `dd` |
-| 需要官方文档支撑的库/API 问题 | `docs-guide` |
-| Gmail、日历、Drive、Docs、Sheets、Slides、Chat、Tasks 或 Meet | `nopal` |
-| GitHub 像天书一样看不懂 | `git-teacher` |
-| 想提升自己用 Claude Code 干活的方式 | `vibe-sunsang` |
-| 想做出你自己的插件/技能/智能体 | `skillers-suda` |
+<table width="100%">
+<tr>
+  <td><strong>如果 Claude Code 卡在了……</strong></td>
+  <td width="25%"><strong>装这个</strong></td>
+</tr>
+<tr>
+  <td>被封锁的公开页面、空白 HTML，或平台专属的网页内容</td>
+  <td><code>insane-search</code></td>
+</tr>
+<tr>
+  <td>需要另一个强力模型来做代码审查</td>
+  <td><code>insane-review</code></td>
+</tr>
+<tr>
+  <td>想准确复用某个网站的样式</td>
+  <td><code>insane-design</code></td>
+</tr>
+<tr>
+  <td>需要附引用的宽泛研究问题</td>
+  <td><code>insane-research</code></td>
+</tr>
+<tr>
+  <td>一个模糊的 app 点子，还没有产品规格</td>
+  <td><code>show-me-the-prd</code></td>
+</tr>
+<tr>
+  <td>一份需要可验证 <code>/goal</code> 执行契约的 PRD</td>
+  <td><code>goaljaby</code></td>
+</tr>
+<tr>
+  <td>一个该拆给多个工人并行的大型构建</td>
+  <td><code>pumasi</code> 或 <code>kkirikkiri</code></td>
+</tr>
+<tr>
+  <td>一张截图、一段长日志，或复制好的参考资料</td>
+  <td><code>dd</code></td>
+</tr>
+<tr>
+  <td>需要官方文档支撑的库/API 问题</td>
+  <td><code>docs-guide</code></td>
+</tr>
+<tr>
+  <td>Gmail、日历、Drive、Docs、Sheets、Slides、Chat、Tasks 或 Meet</td>
+  <td><code>nopal</code></td>
+</tr>
+<tr>
+  <td>GitHub 像天书一样看不懂</td>
+  <td><code>git-teacher</code></td>
+</tr>
+<tr>
+  <td>想提升自己用 Claude Code 干活的方式</td>
+  <td><code>vibe-sunsang</code></td>
+</tr>
+<tr>
+  <td>想做出你自己的插件/技能/智能体</td>
+  <td><code>skillers-suda</code></td>
+</tr>
+</table>
 
 ---
 

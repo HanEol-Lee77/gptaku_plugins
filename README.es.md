@@ -96,21 +96,64 @@ Un pipeline de 7 fases: delimita la pregunta, despliega agentes de investigació
   <img src="assets/flow-transform.png" width="980" alt="Mapa de antes-y-después que muestra los muros de Claude Code enrutados a través de GPTaku Plugins hacia web desbloqueada, revisión pro, PRD listo para IA, contexto ligero y resultados de equipos de agentes">
 </div>
 
-| Si Claude Code se atasca en... | Instala esto |
-| :--- | :--- |
-| Una página pública bloqueada, HTML vacío o contenido web específico de una plataforma | `insane-search` |
-| Una revisión de código que necesita otro modelo potente | `insane-review` |
-| El estilo de un sitio web que quieres reutilizar con precisión | `insane-design` |
-| Una pregunta de investigación amplia que necesita citas | `insane-research` |
-| Una idea de app vaga sin especificación de producto | `show-me-the-prd` |
-| Un PRD que necesita un contrato de ejecución `/goal` verificado | `goaljaby` |
-| Un desarrollo grande que conviene repartir entre varios workers | `pumasi` o `kkirikkiri` |
-| Una captura de pantalla, un log largo o una referencia copiada | `dd` |
-| Una duda sobre una librería/API que necesita docs oficiales | `docs-guide` |
-| Gmail, Calendar, Drive, Docs, Sheets, Slides, Chat, Tasks o Meet | `nopal` |
-| GitHub te suena a otro idioma | `git-teacher` |
-| Quieres mejorar tu forma de trabajar con Claude Code | `vibe-sunsang` |
-| Quieres crear tu propio plugin/skill/agente | `skillers-suda` |
+<table width="100%">
+<tr>
+  <td><strong>Si Claude Code se atasca en...</strong></td>
+  <td width="25%"><strong>Instala esto</strong></td>
+</tr>
+<tr>
+  <td>Una página pública bloqueada, HTML vacío o contenido web específico de una plataforma</td>
+  <td><code>insane-search</code></td>
+</tr>
+<tr>
+  <td>Una revisión de código que necesita otro modelo potente</td>
+  <td><code>insane-review</code></td>
+</tr>
+<tr>
+  <td>El estilo de un sitio web que quieres reutilizar con precisión</td>
+  <td><code>insane-design</code></td>
+</tr>
+<tr>
+  <td>Una pregunta de investigación amplia que necesita citas</td>
+  <td><code>insane-research</code></td>
+</tr>
+<tr>
+  <td>Una idea de app vaga sin especificación de producto</td>
+  <td><code>show-me-the-prd</code></td>
+</tr>
+<tr>
+  <td>Un PRD que necesita un contrato de ejecución <code>/goal</code> verificado</td>
+  <td><code>goaljaby</code></td>
+</tr>
+<tr>
+  <td>Un desarrollo grande que conviene repartir entre varios workers</td>
+  <td><code>pumasi</code> o <code>kkirikkiri</code></td>
+</tr>
+<tr>
+  <td>Una captura de pantalla, un log largo o una referencia copiada</td>
+  <td><code>dd</code></td>
+</tr>
+<tr>
+  <td>Una duda sobre una librería/API que necesita docs oficiales</td>
+  <td><code>docs-guide</code></td>
+</tr>
+<tr>
+  <td>Gmail, Calendar, Drive, Docs, Sheets, Slides, Chat, Tasks o Meet</td>
+  <td><code>nopal</code></td>
+</tr>
+<tr>
+  <td>GitHub te suena a otro idioma</td>
+  <td><code>git-teacher</code></td>
+</tr>
+<tr>
+  <td>Quieres mejorar tu forma de trabajar con Claude Code</td>
+  <td><code>vibe-sunsang</code></td>
+</tr>
+<tr>
+  <td>Quieres crear tu propio plugin/skill/agente</td>
+  <td><code>skillers-suda</code></td>
+</tr>
+</table>
 
 ---
 

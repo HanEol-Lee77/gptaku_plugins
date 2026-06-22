@@ -96,21 +96,64 @@ WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リ
   <img src="assets/flow-transform.png" width="980" alt="Claude Code の壁を GPTaku Plugins 経由でルーティングし、ロック解除されたウェブ、プロのレビュー、AI 対応 PRD、軽量コンテキスト、エージェントチームへと変換する Before-After マップ">
 </div>
 
-| Claude Code が行き詰まるのは… | これを入れる |
-| :--- | :--- |
-| ブロックされた公開ページ、空っぽの HTML、プラットフォーム固有のウェブコンテンツ | `insane-search` |
-| もう 1 つの強力なモデルが必要なコードレビュー | `insane-review` |
-| 正確に再利用したいウェブサイトのスタイル | `insane-design` |
-| 引用が必要な広範なリサーチ課題 | `insane-research` |
-| 製品仕様のない、ぼんやりしたアプリのアイデア | `show-me-the-prd` |
-| 検証済みの `/goal` 実行契約が必要な PRD | `goaljaby` |
-| 複数のワーカーに分割すべき大規模なビルド | `pumasi` または `kkirikkiri` |
-| スクリーンショット、長いログ、コピーしたリファレンス | `dd` |
-| 公式ドキュメントが必要なライブラリ/API の疑問 | `docs-guide` |
-| Gmail、カレンダー、ドライブ、ドキュメント、スプレッドシート、スライド、チャット、ToDo、Meet | `nopal` |
-| GitHub が外国語みたいに感じる | `git-teacher` |
-| Claude Code との付き合い方そのものを良くしたい | `vibe-sunsang` |
-| 自分だけのプラグイン/スキル/エージェントを作りたい | `skillers-suda` |
+<table width="100%">
+<tr>
+  <td><strong>Claude Code が行き詰まるのは…</strong></td>
+  <td width="25%"><strong>これを入れる</strong></td>
+</tr>
+<tr>
+  <td>ブロックされた公開ページ、空っぽの HTML、プラットフォーム固有のウェブコンテンツ</td>
+  <td><code>insane-search</code></td>
+</tr>
+<tr>
+  <td>もう 1 つの強力なモデルが必要なコードレビュー</td>
+  <td><code>insane-review</code></td>
+</tr>
+<tr>
+  <td>正確に再利用したいウェブサイトのスタイル</td>
+  <td><code>insane-design</code></td>
+</tr>
+<tr>
+  <td>引用が必要な広範なリサーチ課題</td>
+  <td><code>insane-research</code></td>
+</tr>
+<tr>
+  <td>製品仕様のない、ぼんやりしたアプリのアイデア</td>
+  <td><code>show-me-the-prd</code></td>
+</tr>
+<tr>
+  <td>検証済みの <code>/goal</code> 実行契約が必要な PRD</td>
+  <td><code>goaljaby</code></td>
+</tr>
+<tr>
+  <td>複数のワーカーに分割すべき大規模なビルド</td>
+  <td><code>pumasi</code> または <code>kkirikkiri</code></td>
+</tr>
+<tr>
+  <td>スクリーンショット、長いログ、コピーしたリファレンス</td>
+  <td><code>dd</code></td>
+</tr>
+<tr>
+  <td>公式ドキュメントが必要なライブラリ/API の疑問</td>
+  <td><code>docs-guide</code></td>
+</tr>
+<tr>
+  <td>Gmail、カレンダー、ドライブ、ドキュメント、スプレッドシート、スライド、チャット、ToDo、Meet</td>
+  <td><code>nopal</code></td>
+</tr>
+<tr>
+  <td>GitHub が外国語みたいに感じる</td>
+  <td><code>git-teacher</code></td>
+</tr>
+<tr>
+  <td>Claude Code との付き合い方そのものを良くしたい</td>
+  <td><code>vibe-sunsang</code></td>
+</tr>
+<tr>
+  <td>自分だけのプラグイン/スキル/エージェントを作りたい</td>
+  <td><code>skillers-suda</code></td>
+</tr>
+</table>
 
 ---
 
