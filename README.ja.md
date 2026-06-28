@@ -52,7 +52,7 @@ Claude Code の中で次のコマンドを実行します。
 
 > 旗艦の 4 本。ほかのすべてが行き詰まる壁を、こいつらは突き破ります。
 
-### 🔎 insane-search · ⭐ 770+
+### 🔎 insane-search · <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
 **Claude Code がブロックされたページを読めないとき、こいつはとにかく中に入ります。**
 WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リーダー、シンジケーションゲートウェイ、TLS なりすまし、本物のヘッドレスブラウザへと段階的にエスカレートし、どれかが通るまで順に試します。API キーは不要です。
 

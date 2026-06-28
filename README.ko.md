@@ -51,7 +51,7 @@ Claude Code 안에서 아래 명령을 실행하세요:
 
 > GPTaku Plugins의 4대 핵심 플러그인입니다. 다른 도구들이 해결하지 못하고 멈추는 지점을 뚫어냅니다.
 
-### 🔎 insane-search · ⭐ 770+
+### 🔎 insane-search · <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
 **Claude Code가 차단된 웹페이지를 못 읽을 때, 기어이 뚫어서 가져옵니다.**
 WAF, 403, CAPTCHA, 로그인 장벽에 막히면 공개 API 리더, 신디케이션 게이트웨이, TLS 임퍼스네이션, 실제 헤드리스 브라우저까지 하나씩 시도해 뚫습니다. API 키는 필요 없습니다.
 

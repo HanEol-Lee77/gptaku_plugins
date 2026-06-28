@@ -52,7 +52,7 @@ Ejecuta esto dentro de Claude Code:
 
 > Los cuatro buques insignia. Rompen los muros donde todo lo demás se queda parado.
 
-### 🔎 insane-search · ⭐ 770+
+### 🔎 insane-search · <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
 **Cuando Claude Code no puede leer una página bloqueada, este entra igual.**
 ¿Te topaste con un WAF, un 403, un CAPTCHA o un muro de inicio de sesión? Va escalando a través de lectores de API públicas, gateways de sindicación, suplantación TLS y un navegador headless real, probando uno tras otro hasta que alguno pasa. Sin claves de API.
 

@@ -52,7 +52,7 @@ Run these inside Claude Code:
 
 > The flagship four. They break through the walls everything else stops at.
 
-### 🔎 insane-search · ⭐ 770+
+### 🔎 insane-search · <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
 **When Claude Code can't read a blocked page, this gets in anyway.**
 Hit a WAF, 403, CAPTCHA, or login wall? It escalates through public API readers, syndication gateways, TLS impersonation, and a real headless browser, trying each until one gets through. No API keys.
 

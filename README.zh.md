@@ -52,7 +52,7 @@
 
 > 旗舰四件套。它们能凿穿其他工具全都卡住的那堵墙。
 
-### 🔎 insane-search · ⭐ 770+
+### 🔎 insane-search · <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
 **当 Claude Code 读不了被封锁的页面时，它照样能进去。**
 撞上 WAF、403、CAPTCHA 还是登录墙？它会逐级升级手段——公共 API 阅读器、内容聚合网关、TLS 指纹伪装，再到一个真正的无头浏览器，一个个试，直到有一个突破为止。无需 API 密钥。
 
