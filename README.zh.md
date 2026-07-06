@@ -6,11 +6,11 @@
 
 **别再费口舌解释你想要什么——让 Claude Code 直接搞定。**
 
-14 个插件：搜索被封锁的网站、从任意 URL 扒下设计系统、
+15 个插件：搜索被封锁的网站、从任意 URL 扒下设计系统、
 审查你的代码、把粗糙的想法变成 PRD——全部在 Claude Code 里完成。
 
 <p>
-  <a href="#-全部插件按分类"><img src="https://img.shields.io/badge/plugins-14-6E56CF" alt="14 个插件"></a>
+  <a href="#-全部插件按分类"><img src="https://img.shields.io/badge/plugins-15-6E56CF" alt="15 个插件"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/platform-Claude_Code-D97757?logo=claude" alt="Claude Code"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-3FB950" alt="MIT"></a>
   <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
@@ -126,6 +126,10 @@
   <td><code>goaljaby</code></td>
 </tr>
 <tr>
+  <td>一个还没真正做完就悄悄停下的目标</td>
+  <td><code>insane-loop</code></td>
+</tr>
+<tr>
   <td>一个该拆给多个工人并行的大型构建</td>
   <td><code>pumasi</code> 或 <code>kkirikkiri</code></td>
 </tr>
@@ -164,7 +168,7 @@
 <table width="100%">
 <tr>
   <td width="25%"><strong>仅需 Claude Code</strong><br><em>（无需任何凭证）</em></td>
-  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
 </tr>
 <tr>
   <td width="25%"><strong>Google Workspace OAuth</strong></td>
@@ -223,6 +227,10 @@
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/goaljaby">goaljaby</a></strong></td>
   <td>PRD → 经审查的 <code>/goal</code> 工作流执行契约。</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="./plugins/insane-loop">insane-loop</a></strong></td>
+  <td>点子 → 完成：在 <code>/goal</code> 里循环执行验证→审查→改进，直到满足文档化的完成定义（DoD）。</td>
 </tr>
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/pumasi">pumasi</a></strong></td>

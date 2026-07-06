@@ -6,11 +6,11 @@
 
 **Deja de explicar lo que quieres — que Claude Code lo haga.**
 
-14 plugins que buscan en sitios bloqueados, extraen sistemas de diseño de cualquier URL,
+15 plugins que buscan en sitios bloqueados, extraen sistemas de diseño de cualquier URL,
 revisan tu código y convierten ideas en bruto en PRDs — todo dentro de Claude Code.
 
 <p>
-  <a href="#-todos-los-plugins-por-categoría"><img src="https://img.shields.io/badge/plugins-14-6E56CF" alt="14 plugins"></a>
+  <a href="#-todos-los-plugins-por-categoría"><img src="https://img.shields.io/badge/plugins-15-6E56CF" alt="15 plugins"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/platform-Claude_Code-D97757?logo=claude" alt="Claude Code"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-3FB950" alt="MIT"></a>
   <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
@@ -126,6 +126,10 @@ Un pipeline de 7 fases: delimita la pregunta, despliega agentes de investigació
   <td><code>goaljaby</code></td>
 </tr>
 <tr>
+  <td>Un objetivo que se detiene en silencio antes de estar realmente terminado</td>
+  <td><code>insane-loop</code></td>
+</tr>
+<tr>
   <td>Un desarrollo grande que conviene repartir entre varios workers</td>
   <td><code>pumasi</code> o <code>kkirikkiri</code></td>
 </tr>
@@ -164,7 +168,7 @@ La mayoría de los plugins solo necesitan una sesión de Claude Code en marcha �
 <table width="100%">
 <tr>
   <td width="25%"><strong>Solo Claude Code</strong><br><em>(Sin credenciales)</em></td>
-  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
 </tr>
 <tr>
   <td width="25%"><strong>OAuth de Google Workspace</strong></td>
@@ -223,6 +227,10 @@ Todos los plugins son de código abierto. El README de cada submódulo detalla s
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/goaljaby">goaljaby</a></strong></td>
   <td>PRD → contrato de ejecución de workflow <code>/goal</code> revisado.</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="./plugins/insane-loop">insane-loop</a></strong></td>
+  <td>Idea → hecho: itera verificar→revisar→mejorar dentro de <code>/goal</code> hasta cumplir el DoD documentado.</td>
 </tr>
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/pumasi">pumasi</a></strong></td>

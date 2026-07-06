@@ -7,10 +7,10 @@
 **やりたいことを説明するのはもう終わり — Claude Code に丸ごとやらせましょう。**
 
 ブロックされたサイトを突破し、あらゆる URL からデザインシステムを抜き取り、
-コードをレビューし、ざっくりしたアイデアを PRD に変える — それを全部 Claude Code の中でやる 14 個のプラグインです。
+コードをレビューし、ざっくりしたアイデアを PRD に変える — それを全部 Claude Code の中でやる 15 個のプラグインです。
 
 <p>
-  <a href="#-全プラグイン一覧カテゴリ別"><img src="https://img.shields.io/badge/plugins-14-6E56CF" alt="14個のプラグイン"></a>
+  <a href="#-全プラグイン一覧カテゴリ別"><img src="https://img.shields.io/badge/plugins-15-6E56CF" alt="15個のプラグイン"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/platform-Claude_Code-D97757?logo=claude" alt="Claude Code"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-3FB950" alt="MIT"></a>
   <a href="https://github.com/fivetaku/insane-search/stargazers"><img src="https://img.shields.io/github/stars/fivetaku/insane-search?style=flat&color=F0B72F" alt="stars"></a>
@@ -126,6 +126,10 @@ WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リ
   <td><code>goaljaby</code></td>
 </tr>
 <tr>
+  <td>本当に終わる前に、静かに止まってしまうゴール</td>
+  <td><code>insane-loop</code></td>
+</tr>
+<tr>
   <td>複数のワーカーに分割すべき大規模なビルド</td>
   <td><code>pumasi</code> または <code>kkirikkiri</code></td>
 </tr>
@@ -164,7 +168,7 @@ WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リ
 <table width="100%">
 <tr>
   <td width="25%"><strong>Claude Code のみ</strong><br><em>(認証情報は不要)</em></td>
-  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
 </tr>
 <tr>
   <td width="25%"><strong>Google Workspace OAuth</strong></td>
@@ -223,6 +227,10 @@ WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リ
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/goaljaby">goaljaby</a></strong></td>
   <td>PRD → レビュー済みの <code>/goal</code> ワークフロー実行契約。</td>
+</tr>
+<tr>
+  <td width="25%"><strong><a href="./plugins/insane-loop">insane-loop</a></strong></td>
+  <td>アイデア → 完成 — 文書化された DoD を満たすまで、<code>/goal</code> の中で検証→レビュー→改善をループ。</td>
 </tr>
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/pumasi">pumasi</a></strong></td>

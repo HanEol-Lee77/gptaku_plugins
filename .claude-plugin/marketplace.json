@@ -213,6 +213,21 @@
         "dd",
         "paste"
       ]
+    },
+    {
+      "name": "insane-loop",
+      "description": "Idea-to-done pipeline loop for Claude Code — chains interview→PRD→goal setup→/goal, then keeps iterating verify→review→improve cycles inside the goal until the documented Definition of Done is met (all VALIDATION pass + zero blocking assumptions). Recovery ladder + driven guard: never stops early. Selectable reviewers: self-review / insane-review / codex / gjc.",
+      "source": "./plugins/insane-loop",
+      "category": "development",
+      "tags": [
+        "pipeline",
+        "loop",
+        "goal-driven",
+        "prd",
+        "orchestration",
+        "recovery",
+        "korean"
+      ]
     }
   ]
 }
