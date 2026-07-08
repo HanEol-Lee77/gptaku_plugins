@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "mode": "snapshot",
+  "cadence": {
+    "type": "manual",
+    "value": null,
+    "action": "notify"
+  },
+  "deep_read": {
+    "recent": 10,
+    "outliers": 3
+  },
+  "created_at": "2026-07-08T22:57:54+0900",
+  "updated_at": "2026-07-08T22:57:54+0900"
+}

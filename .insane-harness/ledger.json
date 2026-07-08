@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "last_run_at": "2026-07-09T02:04:17+0900",
+  "last_run_session_count": 0,
+  "entries": [
+    {
+      "id": "rule-cache-copy-001",
+      "type": "claude_md_rule",
+      "name": "캐시 복사 닷파일 규칙",
+      "detail": "CLAUDE.md 하네스 구획에 캐시 복사 규칙 추가",
+      "source_signals": [
+        "deploy_dotfile_incident_2026-07-08"
+      ],
+      "applied_at": "2026-07-09T00:56:35+0900",
+      "status": "active"
+    },
+    {
+      "id": "hook-precommit-validate-001",
+      "type": "hook",
+      "name": "구 커밋 훅 제거",
+      "detail": "",
+      "source_signals": [],
+      "applied_at": "2026-07-09T02:04:17+0900",
+      "status": "removed"
+    },
+    {
+      "id": "hook-precommit-validate-002",
+      "type": "hook",
+      "name": "커밋 전 frontmatter 검증 v2 (git -C 대응)",
+      "detail": "세그먼트 정규식 판별 — git -C 우회 차단, 따옴표 속 문구 오탐 제거",
+      "source_signals": [
+        "review_bypass_git_dash_C"
+      ],
+      "applied_at": "2026-07-09T02:04:17+0900",
+      "status": "active"
+    }
+  ]
+}
