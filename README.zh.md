@@ -130,6 +130,10 @@
   <td><code>insane-loop</code></td>
 </tr>
 <tr>
+  <td>每个工作区的规则、钩子、工具都要手动搭建</td>
+  <td><code>insane-harness</code></td>
+</tr>
+<tr>
   <td>一个该拆给多个工人并行的大型构建</td>
   <td><code>pumasi</code> 或 <code>kkirikkiri</code></td>
 </tr>
@@ -168,7 +172,7 @@
 <table width="100%">
 <tr>
   <td width="25%"><strong>仅需 Claude Code</strong><br><em>（无需任何凭证）</em></td>
-  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code>, <code>insane-harness</code></td>
 </tr>
 <tr>
   <td width="25%"><strong>Google Workspace OAuth</strong></td>
@@ -260,6 +264,10 @@
 
 ### ⚙️ 工作空间
 <table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-harness">insane-harness</a></strong></td>
+  <td>通过会话日志诊断工作区，经批准门禁应用随之成长的 harness。</td>
+</tr>
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/nopal">nopal</a></strong></td>
   <td>Google Workspace 编排——9 项服务。</td>

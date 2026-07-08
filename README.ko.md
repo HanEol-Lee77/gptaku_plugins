@@ -129,6 +129,10 @@ WAF, 403, CAPTCHA, 로그인 장벽에 막히면 공개 API 리더, 신디케이
   <td><code>insane-loop</code></td>
 </tr>
 <tr>
+  <td>폴더마다 규칙·훅·도구 세팅을 매번 손으로 하는 상황</td>
+  <td><code>insane-harness</code></td>
+</tr>
+<tr>
   <td>대규모 개발 작업을 여러 워커로 나누어 동시 실행하고 싶을 때</td>
   <td><code>pumasi</code> 또는 <code>kkirikkiri</code></td>
 </tr>
@@ -167,7 +171,7 @@ WAF, 403, CAPTCHA, 로그인 장벽에 막히면 공개 API 리더, 신디케이
 <table width="100%">
 <tr>
   <td width="25%"><strong>Claude Code 전용</strong><br><em>(인증 불필요)</em></td>
-  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code>, <code>insane-harness</code></td>
 </tr>
 <tr>
   <td width="25%"><strong>Google Workspace OAuth</strong></td>
@@ -259,6 +263,10 @@ WAF, 403, CAPTCHA, 로그인 장벽에 막히면 공개 API 리더, 신디케이
 
 ### ⚙️ 워크스페이스 연동
 <table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-harness">insane-harness</a></strong></td>
+  <td>세션 로그로 워크스페이스를 진단하고, 승인 게이트를 거쳐 함께 진화하는 하네스를 적용.</td>
+</tr>
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/nopal">nopal</a></strong></td>
   <td>Google Workspace 9대 서비스 오케스트레이션.</td>

@@ -130,6 +130,10 @@ Un pipeline de 7 fases: delimita la pregunta, despliega agentes de investigació
   <td><code>insane-loop</code></td>
 </tr>
 <tr>
+  <td>Un workspace cuyas reglas, hooks y herramientas montas a mano cada vez</td>
+  <td><code>insane-harness</code></td>
+</tr>
+<tr>
   <td>Un desarrollo grande que conviene repartir entre varios workers</td>
   <td><code>pumasi</code> o <code>kkirikkiri</code></td>
 </tr>
@@ -168,7 +172,7 @@ La mayoría de los plugins solo necesitan una sesión de Claude Code en marcha �
 <table width="100%">
 <tr>
   <td width="25%"><strong>Solo Claude Code</strong><br><em>(Sin credenciales)</em></td>
-  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code>, <code>insane-harness</code></td>
 </tr>
 <tr>
   <td width="25%"><strong>OAuth de Google Workspace</strong></td>
@@ -260,6 +264,10 @@ Todos los plugins son de código abierto. El README de cada submódulo detalla s
 
 ### ⚙️ Espacio de trabajo
 <table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-harness">insane-harness</a></strong></td>
+  <td>Diagnostica un workspace desde los registros de sesión y aplica un harness con aprobación que crece con él.</td>
+</tr>
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/nopal">nopal</a></strong></td>
   <td>Orquestación de Google Workspace — 9 servicios.</td>

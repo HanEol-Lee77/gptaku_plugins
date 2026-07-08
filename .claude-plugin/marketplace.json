@@ -228,6 +228,20 @@
         "recovery",
         "korean"
       ]
+    },
+    {
+      "name": "insane-harness",
+      "description": "Meta-harness: diagnoses a workspace from session logs + inventory, then proposes, approves, and applies a tailored harness (plugins, hooks, CLAUDE.md rules, skills) — self-growing via a ledger.",
+      "source": "./plugins/insane-harness",
+      "category": "productivity",
+      "tags": [
+        "harness",
+        "meta-harness",
+        "workspace-diagnosis",
+        "session-analysis",
+        "self-improving",
+        "hooks"
+      ]
     }
   ]
 }

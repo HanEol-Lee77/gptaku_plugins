@@ -130,6 +130,10 @@ WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リ
   <td><code>insane-loop</code></td>
 </tr>
 <tr>
+  <td>ワークスペースごとのルール・フック・ツール設定を毎回手作業でやっている</td>
+  <td><code>insane-harness</code></td>
+</tr>
+<tr>
   <td>複数のワーカーに分割すべき大規模なビルド</td>
   <td><code>pumasi</code> または <code>kkirikkiri</code></td>
 </tr>
@@ -168,7 +172,7 @@ WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リ
 <table width="100%">
 <tr>
   <td width="25%"><strong>Claude Code のみ</strong><br><em>(認証情報は不要)</em></td>
-  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code></td>
+  <td><code>insane-search</code>, <code>insane-design</code>, <code>insane-research</code>, <code>docs-guide</code>, <code>git-teacher</code>, <code>show-me-the-prd</code>, <code>goaljaby</code>, <code>insane-loop</code>, <code>kkirikkiri</code>, <code>skillers-suda</code>, <code>vibe-sunsang</code>, <code>dd</code>, <code>insane-harness</code></td>
 </tr>
 <tr>
   <td width="25%"><strong>Google Workspace OAuth</strong></td>
@@ -260,6 +264,10 @@ WAF、403、CAPTCHA、ログイン壁にぶつかった? パブリック API リ
 
 ### ⚙️ ワークスペース
 <table width="100%">
+<tr>
+  <td width="25%"><strong><a href="https://github.com/fivetaku/insane-harness">insane-harness</a></strong></td>
+  <td>セッションログでワークスペースを診断し、承認ゲート経由で共に成長するハーネスを適用。</td>
+</tr>
 <tr>
   <td width="25%"><strong><a href="https://github.com/fivetaku/nopal">nopal</a></strong></td>
   <td>Google Workspace のオーケストレーション — 9 サービス。</td>
