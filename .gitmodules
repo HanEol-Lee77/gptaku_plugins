@@ -43,9 +43,3 @@
 [submodule "plugins/insane-review"]
 	path = plugins/insane-review
 	url = https://github.com/fivetaku/insane-review.git
-[submodule "plugins/insane-loop"]
-	path = plugins/insane-loop
-	url = https://github.com/fivetaku/insane-loop.git
-[submodule "plugins/insane-harness"]
-	path = plugins/insane-harness
-	url = https://github.com/fivetaku/insane-harness.git
