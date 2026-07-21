@@ -213,6 +213,22 @@
         "dd",
         "paste"
       ]
+    },
+    {
+      "name": "research-survey",
+      "description": "Evidence-grounded research survey with a hallucination-catching verification harness — taxonomy dial, deterministic classify, triple verification, wiki promote gate, gold/seeded grading, and a multi-LLM team-comparison lab.",
+      "source": "./plugins/research-survey",
+      "category": "productivity",
+      "tags": [
+        "research",
+        "survey",
+        "literature-review",
+        "arxiv",
+        "hallucination",
+        "verification",
+        "taxonomy",
+        "korean"
+      ]
     }
   ]
 }
